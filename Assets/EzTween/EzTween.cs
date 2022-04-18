@@ -74,7 +74,7 @@ namespace Ez
         public Tween() { }
 
 
-        // 旧バージョンでは Run にしていたが StartTween へ関数名変更
+        // 旧バージョンの関数名は Run にしていたが StartTween へ関数名変更
         public async Task StartTween(EzEaseType easeType, float from, float to, float time, Action<float> updateAction, Action completeAction = null)
         {
             cancellationTokenSrc = new CancellationTokenSource();

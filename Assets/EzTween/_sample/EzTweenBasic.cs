@@ -57,11 +57,6 @@ public class EzTweenBasic : MonoBehaviour
         Debug.LogWarning("ActTask_StartTweenRendererColor.Complete");// tweené¿çséûÇ…é¿çsÇ≥ÇÍÇÈ
     }
 
-    private void OnDestroy()
-    {
-        //EzTween.CancelAll();
-    }
-
     [SerializeField] Rect drawRect = new Rect(10, 10, 200, 200);
     private void OnGUI()
     {
