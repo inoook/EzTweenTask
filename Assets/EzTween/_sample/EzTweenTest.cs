@@ -10,11 +10,6 @@ public class EzTweenTest : MonoBehaviour
     [SerializeField] EzEaseType ezEaseType = EzEaseType.Linear;
     [SerializeField] Transform targetTrans = null;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     private void Update()
     {
@@ -34,7 +29,7 @@ public class EzTweenTest : MonoBehaviour
         Debug.LogWarning($"to: {to.x}");
         await EzTween.TweenAct(ezEaseType, targetTrans.localScale, to, time, (Vector3 v) => {
             targetTrans.localScale = v;
-        }, null, scaleCancellationTokenSource);
+        }, null, scaleCancellationTokenSource.Token);
 
         scaleCancellationTokenSource = null;
         Debug.Log("Complete_Act_ToScale");

@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/EzTween/_sample/EzTweenSample.unity
+    guid: f95905ccda3270342ac686dbaa70814d
   m_configObjects: {}

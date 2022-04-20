@@ -22,31 +22,6 @@ namespace Ez
         AnimationCurve
     }
 
-    //public static class Extension
-    //{
-    //    public static float Lerp(this float me, float to, float t) {
-    //        return Mathf.Lerp(me, to, t);
-    //    }
-    //    public static Color Lerp(this Color me, Color to, float t) {
-    //        return Color.Lerp(me, to, t);
-    //    }
-    //    public static Vector3 Lerp(this Vector3 me, Vector3 to, float t) {
-    //        return Vector3.Lerp(me, to, t);
-    //    }
-    //    public static Vector2 Lerp(this Vector2 me, Vector2 to, float t) {
-    //        return Vector2.Lerp(me, to, t);
-    //    }
-    //    public static Quaternion Lerp(this Quaternion me, Quaternion to, float t) {
-    //        return Quaternion.Lerp(me, to, t);
-    //    }
-    //}
-
-    //public interface ITweenValue<T>
-    //{
-    //    T Lerp(T to, float v);
-    //}
-
-
     public class Tween
     {
         // # Example
@@ -73,129 +48,182 @@ namespace Ez
 
         public Tween() { }
 
+        public CancellationTokenSource GetCancellationTokenSource(CancellationToken cancellationToken)
+        {
+            if (cancellationTokenSrc == null)
+            {
+                cancellationTokenSrc = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+            }
+            else
+            {
+                if (cancellationTokenSrc.IsCancellationRequested)
+                {
+                    cancellationTokenSrc = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+                }
+            }
+            return cancellationTokenSrc;
+        }
 
         // 旧バージョンの関数名は Run にしていたが StartTween へ関数名変更
-        public async Task StartTween(EzEaseType easeType, float from, float to, float time, Action<float> updateAction, Action completeAction = null)
+        public async Task StartTween(EzEaseType easeType, float from, float to, float time, Action<float> updateAction, Action completeAction = null, CancellationToken cancellationToken = default)
         {
-            cancellationTokenSrc = new CancellationTokenSource();
-            await EzTween.TweenAct(easeType, from, to, time, updateAction, completeAction, cancellationTokenSrc);
-            cancellationTokenSrc = null;
+            cancellationTokenSrc = GetCancellationTokenSource(cancellationToken);
+            await EzTween.TweenAct(easeType, from, to, time, updateAction, completeAction, cancellationTokenSrc.Token);
+            //if (cancellationTokenSrc.IsCancellationRequested)
+            //{
+            //    cancellationTokenSrc = null;
+            //}
         }
-        public async Task StartTween(EzEaseType easeType, Vector3 from, Vector3 to, float time, Action<Vector3> updateAction, Action completeAction = null)
+        public async Task StartTween(EzEaseType easeType, Vector3 from, Vector3 to, float time, Action<Vector3> updateAction, Action completeAction = null, CancellationToken cancellationToken = default)
         {
-            cancellationTokenSrc = new CancellationTokenSource();
-            await EzTween.TweenAct(easeType, from, to, time, updateAction, completeAction, cancellationTokenSrc);
-            cancellationTokenSrc = null;
+            cancellationTokenSrc = GetCancellationTokenSource(cancellationToken);
+            await EzTween.TweenAct(easeType, from, to, time, updateAction, completeAction, cancellationTokenSrc.Token);
+            //if (cancellationTokenSrc.IsCancellationRequested)
+            //{
+            //    cancellationTokenSrc = null;
+            //}
         }
-        public async Task StartTween(EzEaseType easeType, Vector2 from, Vector2 to, float time, System.Action<Vector2> updateAction, System.Action completeAction = null)
+        public async Task StartTween(EzEaseType easeType, Vector2 from, Vector2 to, float time, Action<Vector2> updateAction, Action completeAction = null, CancellationToken cancellationToken = default)
         {
-            cancellationTokenSrc = new CancellationTokenSource();
-            await EzTween.TweenAct(easeType, from, to, time, updateAction, completeAction, cancellationTokenSrc);
-            cancellationTokenSrc = null;
+            cancellationTokenSrc = GetCancellationTokenSource(cancellationToken);
+            await EzTween.TweenAct(easeType, from, to, time, updateAction, completeAction, cancellationTokenSrc.Token);
+            //if (cancellationTokenSrc.IsCancellationRequested)
+            //{
+            //    cancellationTokenSrc = null;
+            //}
         }
-        public async Task StartTween(EzEaseType easeType, Color from, Color to, float time, System.Action<Color> updateAction, System.Action completeAction = null)
+        public async Task StartTween(EzEaseType easeType, Color from, Color to, float time, Action<Color> updateAction, Action completeAction = null, CancellationToken cancellationToken = default)
         {
-            cancellationTokenSrc = new CancellationTokenSource();
-            await EzTween.TweenAct(easeType, from, to, time, updateAction, completeAction, cancellationTokenSrc);
-            cancellationTokenSrc = null;
+            cancellationTokenSrc = GetCancellationTokenSource(cancellationToken);
+            await EzTween.TweenAct(easeType, from, to, time, updateAction, completeAction, cancellationTokenSrc.Token);
+            //if (cancellationTokenSrc.IsCancellationRequested)
+            //{
+            //    cancellationTokenSrc = null;
+            //}
         }
-        public async Task StartTween(EzEaseType easeType, Quaternion from, Quaternion to, float time, System.Action<Quaternion> updateAction, System.Action completeAction = null)
+        public async Task StartTween(EzEaseType easeType, Quaternion from, Quaternion to, float time, Action<Quaternion> updateAction, Action completeAction = null, CancellationToken cancellationToken = default)
         {
-            cancellationTokenSrc = new CancellationTokenSource();
-            await EzTween.TweenAct(easeType, from, to, time, updateAction, completeAction, cancellationTokenSrc);
-            cancellationTokenSrc = null;
+            cancellationTokenSrc = GetCancellationTokenSource(cancellationToken);
+            await EzTween.TweenAct(easeType, from, to, time, updateAction, completeAction, cancellationTokenSrc.Token);
+            //if (cancellationTokenSrc.IsCancellationRequested)
+            //{
+            //    cancellationTokenSrc = null;
+            //}
         }
 
         public void Cancel()
         {
             cancellationTokenSrc?.Cancel();
+            cancellationTokenSrc?.Dispose();
 
-            // remove
-            if (cancellationTokenSrc != null)
-            {
-                EzTween.RemoveTween(cancellationTokenSrc);
-            }
+            cancellationTokenSrc = null;
         }
 
         // 使いやすくするためのショートカット
-        public async Task StartTweenPosition(Transform transform, EzEaseType easeType, Vector3 to, float time, System.Action completeAction = null)
+        public async Task StartTweenPosition(Transform transform, EzEaseType easeType, Vector3 to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
         {
             Vector3 from = transform.position;
             await StartTween(easeType, from, to, time, (v) =>
             {
                 transform.position = v;
-            }, completeAction);
+            }, completeAction, cancellationToken);
         }
-        public async Task StartTweenLocalPosition(Transform transform, EzEaseType easeType, Vector3 to, float time, System.Action completeAction = null)
+        public async Task StartTweenLocalPosition(Transform transform, EzEaseType easeType, Vector3 to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
         {
             Vector3 from = transform.localPosition;
             await StartTween(easeType, from, to, time, (v) =>
             {
                 transform.localPosition = v;
-            }, completeAction);
+            }, completeAction, cancellationToken);
         }
-        public async Task StartTweenRotation(Transform transform, EzEaseType easeType, Quaternion to, float time, System.Action completeAction = null)
+        public async Task StartTweenEulerAngles(Transform transform, EzEaseType easeType, Vector3 to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            Vector3 from = transform.position;
+            await StartTween(easeType, from, to, time, (v) =>
+            {
+                transform.eulerAngles = v;
+            }, completeAction, cancellationToken);
+        }
+        public async Task StartTweenLocalEulerAngles(Transform transform, EzEaseType easeType, Vector3 to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            Vector3 from = transform.position;
+            await StartTween(easeType, from, to, time, (v) =>
+            {
+                transform.localEulerAngles = v;
+            }, completeAction, cancellationToken);
+        }
+        public async Task StartTweenRotation(Transform transform, EzEaseType easeType, Quaternion to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
         {
             Quaternion from = transform.rotation;
             await StartTween(easeType, from, to, time, (v) =>
             {
                 transform.rotation = v;
-            }, completeAction);
+            }, completeAction, cancellationToken);
         }
-        public async Task StartTweenLocalRotation(Transform transform, EzEaseType easeType, Quaternion to, float time, System.Action completeAction = null)
+        public async Task StartTweenLocalRotation(Transform transform, EzEaseType easeType, Quaternion to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
         {
             Quaternion from = transform.localRotation;
             await StartTween(easeType, from, to, time, (v) =>
             {
                 transform.localRotation = v;
-            }, completeAction);
+            }, completeAction, cancellationToken);
         }
-        public async Task StartTweenScale(Transform transform, EzEaseType easeType, Vector3 to, float time, System.Action completeAction = null)
+        public async Task StartTweenScale(Transform transform, EzEaseType easeType, Vector3 to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
         {
             Vector3 from = transform.localScale;
             await StartTween(easeType, from, to, time, (v) =>
             {
                 transform.localScale = v;
-            }, completeAction);
+            }, completeAction, cancellationToken);
         }
         // renderer
-        public async Task StartTweenRendererColor(Renderer renderer, EzEaseType easeType, Color to, float time, System.Action completeAction = null)
+        public async Task StartTweenRendererColor(Renderer renderer, EzEaseType easeType, Color to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
         {
             Color from = renderer.material.color;
             await StartTween(easeType, from, to, time, (v) =>
             {
                 renderer.material.color = v;
-            }, completeAction);
+            }, completeAction, cancellationToken);
         }
         // material
-        public async Task StartTweenMaterial(Material material, string floatParamName, EzEaseType easeType, float to, float time, System.Action completeAction = null)
+        public async Task StartTweenMaterial(Material material, string paramName, EzEaseType easeType, float to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
         {
-            float from = material.GetFloat(floatParamName);
+            float from = material.GetFloat(paramName);
             await StartTween(easeType, from, to, time, (v) =>
             {
-                material.SetFloat(floatParamName, v);
-            }, completeAction);
+                material.SetFloat(paramName, v);
+            }, completeAction, cancellationToken);
+        }
+        public async Task StartTweenMaterial(Material material, string paramName, EzEaseType easeType, Color to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            Color from = material.GetColor(paramName);
+            await StartTween(easeType, from, to, time, (v) =>
+            {
+                material.SetColor(paramName, v);
+            }, completeAction, cancellationToken);
         }
         // ui
-        public async Task StartTweenUiColor(MaskableGraphic uiElement, EzEaseType easeType, Color to, float time, System.Action completeAction = null)
+        public async Task StartTweenUiColor(MaskableGraphic uiElement, EzEaseType easeType, Color to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
         {
             Color from = uiElement.color;
             await StartTween(easeType, from, to, time, (v) =>
             {
                 uiElement.color = v;
-            }, completeAction);
+            }, completeAction, cancellationToken);
         }
-        public async Task StartTweenCanvasGroupAlpha(CanvasGroup canvasGroup, EzEaseType easeType, float to, float time, System.Action completeAction = null)
+        public async Task StartTweenCanvasGroupAlpha(CanvasGroup canvasGroup, EzEaseType easeType, float to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
         {
             float from = canvasGroup.alpha;
-            await EzTween.TweenAct(easeType, from, to, time, (v) =>
+            await StartTween(easeType, from, to, time, (v) =>
             {
                 canvasGroup.alpha = v;
-            }, completeAction);
+            }, completeAction, cancellationToken);
         }
-
     }
 
+    /// <summary>
+    /// 終了時に全てのtweenのCancelを行う
+    /// </summary>
     public class EzTweenBehav : MonoBehaviour
     {
         static EzTweenBehav instance;
@@ -203,7 +231,11 @@ namespace Ez
         static public EzTweenBehav Instance
         {
             get {
-                if (instance == null)
+                if (!Application.isPlaying)
+                {
+                    return null;
+                }
+                 if (instance == null)
                 {
                     go = new GameObject();
                     instance = go.AddComponent<EzTweenBehav>();
@@ -214,18 +246,38 @@ namespace Ez
             }
         }
 
+        CancellationTokenSource destoryCancellationTokenSource = null; // App終了時にCancel実行。全てのtweenにこのtokenを設定している。
+
         public void Init()
         {
-            
+            if(destoryCancellationTokenSource == null)
+            {
+                destoryCancellationTokenSource = new CancellationTokenSource();
+            }
         }
 
-        public void UpdateCount(int count)
+        public CancellationToken DestoryCancellationToken => destoryCancellationTokenSource.Token;
+
+        public void CancelAllTween()
         {
-            go.name = $"EzTween: ({count})";
+            destoryCancellationTokenSource?.Cancel();
+            destoryCancellationTokenSource?.Dispose();
+
+            destoryCancellationTokenSource = new CancellationTokenSource();
         }
-        void OnDestroy()
+
+        void Update()
+        {
+            this.gameObject.name = "EzTween (" + EzTween.TweenCount + ")";
+        }
+
+        void OnApplicationQuit()
         {
             EzTween.CancelAll();
+
+            destoryCancellationTokenSource?.Cancel();
+            destoryCancellationTokenSource?.Dispose();
+            destoryCancellationTokenSource = null;
         }
     }
 
@@ -235,259 +287,148 @@ namespace Ez
         static List<CancellationTokenSource> tweenList = new List<CancellationTokenSource>();
         public static int TweenCount => tweenList.Count;
 
+        /// <summary>
+        /// 実行中※のtweenのキャンセル。Chainなどで未実行のtweenはキャンセルされない。
+        /// </summary>
         public static void CancelAll()
         {
+            EzTweenBehav.Instance.CancelAllTween();
+
+            // ---
             //Debug.LogWarning($"CancelAll: {tweenList.Count}");
             // Note: foreach を使うと、DelayにTokenを渡しているとエラーが発生するときがある
             // for であればエラーは起きない
-            // Delay にToken 渡さないでforeachが安全そう
+            // Delay にToken 渡さないでforeachが安全そう？
 
             //foreach (var m in tweenList)
             //{
             //    m.Cancel();
             //}
-            for (int i = 0; i < tweenList.Count; i++)
-            {
-                var m = tweenList[i];
-                m.Cancel();
-            }
-            tweenList.Clear();
-            //Debug.LogWarning("CancenAll END");
+
+            //Debug.LogWarning($"[CancelAll] tweenList.Count: {tweenList.Count}");
+            //for (int i = tweenList.Count-1; i >= 0; i--)
+            //{
+            //    var m = tweenList[i];
+            //    m.Cancel();
+            //}
+            //tweenList.Clear();
         }
 
+        // ----------
         // easeType tween
         // それぞれの型でのショートカット
         // EzEaseType / float
-        public static async Task TweenAct(EzEaseType easeType, float from, float to, float time, System.Action<float> updateAction, System.Action completeAction = null, CancellationTokenSource cancellationTokenSource = null)
+        public static async Task TweenAct(EzEaseType easeType, float from, float to, float time, Action<float> updateAction, Action completeAction = null, CancellationToken cancellationToken = default)
         {
-            await TweenBaseAct(from, to, time, updateAction, completeAction, easeType, null, cancellationTokenSource);
+            await TweenBaseAct(from, to, time, updateAction, completeAction, easeType, null, cancellationToken);
         }
         // EzEaseType / Vecotr3
-        public static async Task TweenAct(EzEaseType easeType, Vector3 from, Vector3 to, float time, System.Action<Vector3> updateAction, System.Action completeAction = null, CancellationTokenSource cancellationTokenSource = null)
+        public static async Task TweenAct(EzEaseType easeType, Vector3 from, Vector3 to, float time, Action<Vector3> updateAction, Action completeAction = null, CancellationToken cancellationToken = default)
         {
             await TweenBaseAct(0, 1, time, (v) =>
             {
                 Vector3 p = Vector3.LerpUnclamped(from, to, v);
                 updateAction(p);
-            }, completeAction, easeType, null, cancellationTokenSource);
+            }, completeAction, easeType, null, cancellationToken);
         }
         // EzEaseType / Vector2
-        public static async Task TweenAct(EzEaseType easeType, Vector2 from, Vector2 to, float time, System.Action<Vector2> updateAction, System.Action completeAction = null, CancellationTokenSource cancellationTokenSource = null)
+        public static async Task TweenAct(EzEaseType easeType, Vector2 from, Vector2 to, float time, Action<Vector2> updateAction, Action completeAction = null, CancellationToken cancellationToken = default)
         {
             await TweenBaseAct(0, 1, time, (v) =>
             {
                 Vector2 p = Vector2.LerpUnclamped(from, to, v);
                 updateAction(p);
-            }, completeAction, easeType, null, cancellationTokenSource);
+            }, completeAction, easeType, null, cancellationToken);
         }
         // EzEaseType / Color
-        public static async Task TweenAct(EzEaseType easeType, Color from, Color to, float time, System.Action<Color> updateAction, System.Action completeAction = null, CancellationTokenSource cancellationTokenSource = null)
+        public static async Task TweenAct(EzEaseType easeType, Color from, Color to, float time, Action<Color> updateAction, Action completeAction = null, CancellationToken cancellationToken = default)
         {
             await TweenBaseAct(0, 1, time, (v) =>
             {
                 Color p = Color.LerpUnclamped(from, to, v);
                 updateAction(p);
-            }, completeAction, easeType, null, cancellationTokenSource);
+            }, completeAction, easeType, null, cancellationToken);
         }
         // EzEaseType / Color32
-        public static async Task TweenAct(EzEaseType easeType, Color32 from, Color32 to, float time, System.Action<Color32> updateAction, System.Action completeAction = null, CancellationTokenSource cancellationTokenSource = null)
+        public static async Task TweenAct(EzEaseType easeType, Color32 from, Color32 to, float time, Action<Color32> updateAction, Action completeAction = null, CancellationToken cancellationToken = default)
         {
             await TweenBaseAct(0, 1, time, (v) =>
             {
                 Color32 p = Color32.LerpUnclamped(from, to, v);
                 updateAction(p);
-            }, completeAction, easeType, null, cancellationTokenSource);
+            }, completeAction, easeType, null, cancellationToken);
         }
         // EzEaseType / Quaternion
-        public static async Task TweenAct(EzEaseType easeType, Quaternion from, Quaternion to, float time, System.Action<Quaternion> updateAction, System.Action completeAction = null, CancellationTokenSource cancellationTokenSource = null)
+        public static async Task TweenAct(EzEaseType easeType, Quaternion from, Quaternion to, float time, Action<Quaternion> updateAction, Action completeAction = null, CancellationToken cancellationToken = default)
         {
             await TweenBaseAct(0, 1, time, (v) =>
             {
                 Quaternion p = Quaternion.LerpUnclamped(from, to, v);
                 updateAction(p);
-            }, completeAction, easeType, null, cancellationTokenSource);
+            }, completeAction, easeType, null, cancellationToken);
         }
         //
         // AnimationCurve tween
         // Tween をアニメーションカーブで定義
         // float
-        public static async Task TweenAct(AnimationCurve animationCurve, float from, float to, float time, System.Action<float> updateAction, System.Action completeAction = null, CancellationTokenSource cancellationTokenSource = null)
+        public static async Task TweenAct(AnimationCurve animationCurve, float from, float to, float time, Action<float> updateAction, Action completeAction = null, CancellationToken cancellationToken = default)
         {
-            await TweenBaseAct(from, to, time, updateAction, completeAction, EzEaseType.AnimationCurve, animationCurve, cancellationTokenSource);
+            await TweenBaseAct(from, to, time, updateAction, completeAction, EzEaseType.AnimationCurve, animationCurve, cancellationToken);
         }
         // AnimationCurve / Vector3
-        public static async Task TweenAct(AnimationCurve animationCurve, Vector3 from, Vector3 to, float time, System.Action<Vector3> updateAction, System.Action completeAction = null, CancellationTokenSource cancellationTokenSource = null)
+        public static async Task TweenAct(AnimationCurve animationCurve, Vector3 from, Vector3 to, float time, Action<Vector3> updateAction, Action completeAction = null, CancellationToken cancellationToken = default)
         {
             await TweenBaseAct(0, 1, time, (v) =>
             {
                 Vector3 p = Vector3.LerpUnclamped(from, to, v);
                 updateAction(p);
-            }, completeAction, EzEaseType.AnimationCurve, animationCurve, cancellationTokenSource);
+            }, completeAction, EzEaseType.AnimationCurve, animationCurve, cancellationToken);
         }
         //  AnimationCurve / Vector2
-        public static async Task TweenAct(AnimationCurve animationCurve, Vector2 from, Vector2 to, float time, System.Action<Vector2> updateAction, System.Action completeAction = null, CancellationTokenSource cancellationTokenSource = null)
+        public static async Task TweenAct(AnimationCurve animationCurve, Vector2 from, Vector2 to, float time, Action<Vector2> updateAction, Action completeAction = null, CancellationToken cancellationToken = default)
         {
             await TweenBaseAct(0, 1, time, (v) =>
             {
                 Vector2 p = Vector2.LerpUnclamped(from, to, v);
                 updateAction(p);
-            }, completeAction, EzEaseType.AnimationCurve, animationCurve, cancellationTokenSource);
+            }, completeAction, EzEaseType.AnimationCurve, animationCurve, cancellationToken);
         }
         //  AnimationCurve / Color
-        public static async Task TweenAct(AnimationCurve animationCurve, Color from, Color to, float time, System.Action<Color> updateAction, System.Action completeAction = null, CancellationTokenSource cancellationTokenSource = null)
+        public static async Task TweenAct(AnimationCurve animationCurve, Color from, Color to, float time, Action<Color> updateAction, Action completeAction = null, CancellationToken cancellationToken = default)
         {
             await TweenBaseAct(0, 1, time, (v) =>
             {
                 Color p = Color.LerpUnclamped(from, to, v);
                 updateAction(p);
-            }, completeAction, EzEaseType.AnimationCurve, animationCurve, cancellationTokenSource);
+            }, completeAction, EzEaseType.AnimationCurve, animationCurve, cancellationToken);
         }
         //  AnimationCurve / Color32
-        public static async Task TweenAct(AnimationCurve animationCurve, Color32 from, Color32 to, float time, System.Action<Color32> updateAction, System.Action completeAction = null, CancellationTokenSource cancellationTokenSource = null)
+        public static async Task TweenAct(AnimationCurve animationCurve, Color32 from, Color32 to, float time, Action<Color32> updateAction, Action completeAction = null, CancellationToken cancellationToken = default)
         {
             await TweenBaseAct(0, 1, time, (v) =>
             {
                 Color32 p = Color32.LerpUnclamped(from, to, v);
                 updateAction(p);
-            }, completeAction, EzEaseType.AnimationCurve, animationCurve, cancellationTokenSource);
+            }, completeAction, EzEaseType.AnimationCurve, animationCurve, cancellationToken);
         }
         //  AnimationCurve / Quaternion
-        public static async Task TweenAct(AnimationCurve animationCurve, Quaternion from, Quaternion to, float time, System.Action<Quaternion> updateAction, System.Action completeAction = null, CancellationTokenSource cancellationTokenSource = null)
+        public static async Task TweenAct(AnimationCurve animationCurve, Quaternion from, Quaternion to, float time, Action<Quaternion> updateAction, Action completeAction = null, CancellationToken cancellationToken = default)
         {
             await TweenBaseAct(0, 1, time, (v) =>
             {
                 Quaternion p = Quaternion.LerpUnclamped(from, to, v);
                 updateAction(p);
-            }, completeAction, EzEaseType.AnimationCurve, animationCurve, cancellationTokenSource);
+            }, completeAction, EzEaseType.AnimationCurve, animationCurve, cancellationToken);
         }
         #endregion
 
-        #region shortcut
-        // よく使うtweenを使いやすくするため
-        // transform
-        public static async Task TweenPosition(Transform transform, EzEaseType easeType, Vector3 to, float time, System.Action completeAction = null, CancellationTokenSource cancellationTokenSource = null)
+        static async Task TweenBaseAct(float from, float to, float time, Action<float> updateAction, Action completeAction = null, EzEaseType easeType = EzEaseType.Linear, AnimationCurve curve = null, CancellationToken token = default)
         {
-            Vector3 from = transform.position;
-            await TweenAct(easeType, from, to, time, (v) =>
-            {
-                transform.position = v;
-            }, completeAction, cancellationTokenSource);
-        }
-        public static async Task TweenLocalPosition(Transform transform, EzEaseType easeType, Vector3 to, float time, System.Action completeAction = null, CancellationTokenSource cancellationTokenSource = null)
-        {
-            Vector3 from = transform.localPosition;
-            await TweenAct(easeType, from, to, time, (v) =>
-            {
-                transform.localPosition = v;
-            }, completeAction, cancellationTokenSource);
-        }
-        public static async Task TweenRotation(Transform transform, EzEaseType easeType, Quaternion to, float time, System.Action completeAction = null, CancellationTokenSource cancellationTokenSource = null)
-        {
-            Quaternion from = transform.rotation;
-            await TweenAct(easeType, from, to, time, (v) =>
-            {
-                transform.rotation = v;
-            }, completeAction, cancellationTokenSource);
-        }
-        public static async Task TweenLocalRotation(Transform transform, EzEaseType easeType, Quaternion to, float time, System.Action completeAction = null, CancellationTokenSource cancellationTokenSource = null)
-        {
-            Quaternion from = transform.localRotation;
-            await TweenAct(easeType, from, to, time, (v) =>
-            {
-                transform.localRotation = v;
-            }, completeAction, cancellationTokenSource);
-        }
-        public static async Task TweenScale(Transform transform, EzEaseType easeType, Vector3 to, float time, System.Action completeAction = null, CancellationTokenSource cancellationTokenSource = null)
-        {
-            Vector3 from = transform.localScale;
-            await TweenAct(easeType, from, to, time, (v) =>
-            {
-                transform.localScale = v;
-            }, completeAction, cancellationTokenSource);
-        }
-        // renderer
-        public static async Task TweenRendererColor(Renderer renderer, EzEaseType easeType, Color to, float time, System.Action completeAction = null, CancellationTokenSource cancellationTokenSource = null)
-        {
-            Color from = renderer.material.color;
-            await TweenAct(easeType, from, to, time, (v) =>
-            {
-                renderer.material.color = v;
-            }, completeAction, cancellationTokenSource);
-        }
-        // material
-        public static async Task TweenMaterial(Material material, string floatParamName, EzEaseType easeType, float to, float time, System.Action completeAction = null, CancellationTokenSource cancellationTokenSource = null)
-        {
-            float from = material.GetFloat(floatParamName);
-            await TweenAct(easeType, from, to, time, (v) =>
-            {
-                material.SetFloat(floatParamName, v);
-            }, completeAction, cancellationTokenSource);
-        }
-        // ui
-        public static async Task TweenUiColor(MaskableGraphic uiElement, EzEaseType easeType, Color to, float time, System.Action completeAction = null, CancellationTokenSource cancellationTokenSource = null)
-        {
-            Color from = uiElement.color;
-            await TweenAct(easeType, from, to, time, (v) =>
-            {
-                uiElement.color = v;
-            }, completeAction, cancellationTokenSource);
-        }
-        public static async Task TweenCanvasGroupAlpha(CanvasGroup canvasGroup, EzEaseType easeType, float to, float time, System.Action completeAction = null, CancellationTokenSource cancellationTokenSource = null)
-        {
-            float from = canvasGroup.alpha;
-            await TweenAct(easeType, from, to, time, (v) =>
-            {
-                canvasGroup.alpha = v;
-            }, completeAction, cancellationTokenSource);
-        }
-        #endregion
-
-
-        static async Task TweenBaseAct(float from, float to, float time, System.Action<float> updateAction, System.Action completeAction = null, EzEaseType easeType = EzEaseType.Linear, AnimationCurve curve = null, CancellationTokenSource tokenSource = null)
-        {
-            if (tokenSource == null)
-            {
-                tokenSource = new CancellationTokenSource();
-                Debug.LogWarning("create: CancellationTokenSource");
-            }
-            AddTween(tokenSource);
-
-            //try
-            //{
-                await TweenAsync(tokenSource.Token, from, to, time, updateAction, completeAction, easeType, curve);
-            //}
-            //catch (System.OperationCanceledException e)
-            //{
-            //    Debug.Log($"TweenBaseAct cancel: " + e);
-            //}
-            //catch (System.Exception e)
-            //{
-            //    Debug.LogError(e);
-            //}
-
-            RemoveTween(tokenSource);
-
-            tokenSource = null;
+            await TweenAsync(from, to, time, updateAction, completeAction, easeType, curve, token);
         }
 
-        public static void AddTween(CancellationTokenSource cancellationTokenSource)
+        public static Func<float, float> GetEaseAction(EzEaseType type)
         {
-            tweenList.Add(cancellationTokenSource);
-            EzTweenBehav.Instance.UpdateCount(tweenList.Count);
-
-        }
-        public static void RemoveTween(CancellationTokenSource cancellationTokenSource)
-        {
-            if (tweenList.Contains(cancellationTokenSource))
-            {
-                tweenList.Remove(cancellationTokenSource);
-                EzTweenBehav.Instance.UpdateCount(tweenList.Count);
-            }
-        }
-
-        public static System.Func<float, float> GetEaseAction(EzEaseType type)
-        {
-
             switch (type)
             {
                 case EzEaseType.SineIn: return (v) => Easing.SineIn(v);
@@ -522,11 +463,46 @@ namespace Ez
             }
         }
 
-        #region tween
-
-        static async Task TweenAsync(CancellationToken cancellToken, float from, float to, float time, System.Action<float> updateAction, System.Action completeAction = null, EzEaseType easeType = EzEaseType.Linear, AnimationCurve curve = null)
+        static void AddTween(CancellationTokenSource cancellationTokenSource)
         {
+            if (!tweenList.Contains(cancellationTokenSource))
+            {
+                tweenList.Add(cancellationTokenSource);
+            }
+        }
+        static void RemoveTween(CancellationTokenSource cancellationTokenSource)
+        {
+            if (tweenList.Contains(cancellationTokenSource))
+            {
+                tweenList.Remove(cancellationTokenSource);
+            }
+        }
+
+        #region tween
+        /// <summary>
+        /// Tween の基幹コード
+        /// CancellationToken を使用し、キャンセルをコントロールする場合はこれを使う
+        /// </summary>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <param name="time"></param>
+        /// <param name="updateAction"></param>
+        /// <param name="completeAction"></param>
+        /// <param name="easeType"></param>
+        /// <param name="curve"></param>
+        /// <param name="cancellToken"></param>
+        /// <returns></returns>
+        static async Task TweenAsync(float from, float to, float time, Action<float> updateAction, Action completeAction = null, EzEaseType easeType = EzEaseType.Linear, AnimationCurve curve = null, CancellationToken cancellToken = default)
+        {
+            if (!Application.isPlaying) { return; }
+
             EzTweenBehav.Instance.Init();
+            CancellationTokenSource tokenSource = CancellationTokenSource.CreateLinkedTokenSource(cancellToken, EzTweenBehav.Instance.DestoryCancellationToken);
+
+            AddTween(tokenSource);
+
+            var _token = tokenSource.Token;
+            //var _token = cancellToken;
 
             try
             {
@@ -536,13 +512,18 @@ namespace Ez
 
                 if (d != 0)
                 {
-                    System.Func<float, float> easeAct = GetEaseAction(easeType);
+                    Func<float, float> easeAct = GetEaseAction(easeType);
+                    //while (Application.isPlaying &&  t < time)
                     while (t < time)
-                    {
+                        {
                         //t += Time.deltaTime;
                         t = Time.time - startTime;
                         float per = t / time;
-                        if (per >= 1) { break; } // Complete
+                        if (per >= 1) {
+                            updateAction(to);
+                            completeAction?.Invoke();
+                            break;
+                        } // Complete
 
                         per = Mathf.Clamp01(per);
 
@@ -555,30 +536,412 @@ namespace Ez
                             per = easeAct(per);
                         }
 
-                        cancellToken.ThrowIfCancellationRequested();
+                        //await Task.Delay((int)(Time.deltaTime*1000));
+                        await Task.Delay(33, _token);
+                        //await Task.Delay(33, cancellToken);  // tokenを渡すと EzTween.CancelAll() で foreachをしようしているとエラーが発生する時がある。forだとエラーが起きない？
+
+                        _token.ThrowIfCancellationRequested();
 
                         updateAction(from + d * per);
-
-                        //await Task.Delay((int)(Time.deltaTime*1000));
-                        await Task.Delay(33);
-                        //await Task.Delay(33, cancellToken);  // tokenを渡すと EzTween.CancelAll() で foreachをしようしているとエラーが発生する時がある。forだとエラーが起きない？
                     }
                 }
-
-                //Debug.Log("[Tween] Complete");
-                updateAction(to);
-                completeAction?.Invoke();
             }
-            catch (System.OperationCanceledException e)
+            catch (OperationCanceledException e)
             {
-                Debug.Log($"TweenAsync cancel: " + e);
+                Debug.Log($"[TweenAsync cancel]: " + e);
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 Debug.LogError(e);
             }
-            cancellToken.ThrowIfCancellationRequested();
+
+            RemoveTween(tokenSource);
+        }
+
+        public static async Task DelaySec(float sec, CancellationToken cancellToken = default)
+        {
+            if (!Application.isPlaying) { return; }
+
+            EzTweenBehav.Instance.Init();
+            CancellationTokenSource tokenSource = CancellationTokenSource.CreateLinkedTokenSource(cancellToken, EzTweenBehav.Instance.DestoryCancellationToken);
+
+            AddTween(tokenSource);
+
+            try
+            {
+                var _token = tokenSource.Token;
+                //var _token = cancellToken;
+                _token.ThrowIfCancellationRequested();
+                await Task.Delay(Mathf.CeilToInt(1000*sec), _token);
+            }
+            catch (OperationCanceledException e)
+            {
+                Debug.Log($"[Delay.cancel]: " + e);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+
+            RemoveTween(tokenSource);
         }
         #endregion
+
+
+        #region shortcut
+        // ----------
+        // よく使うtweenを使いやすくするため。各パラメーターのTween
+        // transform
+        public static async Task TweenPosition(Transform transform, EzEaseType easeType, Vector3 to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            try
+            {
+                Vector3 from = transform.position;
+                await TweenAct(easeType, from, to, time, (v) =>
+                {
+                    transform.position = v;
+                }, completeAction, cancellationToken);
+            }
+            catch (OperationCanceledException e)
+            {
+                Debug.Log($"[TweenPosition cancel]: " + e);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+        }
+        public static async Task TweenLocalPosition(Transform transform, EzEaseType easeType, Vector3 to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            try
+            {
+                Vector3 from = transform.localPosition;
+                await TweenAct(easeType, from, to, time, (v) =>
+                {
+                    transform.localPosition = v;
+                }, completeAction, cancellationToken);
+            }
+            catch (OperationCanceledException e)
+            {
+                Debug.Log($"[TweenLocalPosition cancel]: " + e);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+        }
+        public static async Task TweenRotation(Transform transform, EzEaseType easeType, Quaternion to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            try
+            {
+                Quaternion from = transform.rotation;
+                await TweenAct(easeType, from, to, time, (v) =>
+                {
+                    transform.rotation = v;
+                }, completeAction, cancellationToken);
+            }
+            catch (OperationCanceledException e)
+            {
+                Debug.Log($"[TweenRotation cancel]: " + e);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+        }
+        public static async Task TweenLocalRotation(Transform transform, EzEaseType easeType, Quaternion to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            try {
+                Quaternion from = transform.localRotation;
+                await TweenAct(easeType, from, to, time, (v) =>
+                {
+                    transform.localRotation = v;
+                }, completeAction, cancellationToken);
+            }
+            catch (OperationCanceledException e)
+            {
+                Debug.Log($"[TweenLocalRotation cancel]: " + e);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+        }
+
+        public static async Task TweenScale(Transform transform, EzEaseType easeType, Vector3 to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            try
+            {
+                Vector3 from = transform.localScale;
+                await TweenAct(easeType, from, to, time, (v) =>
+                {
+                    transform.localScale = v;
+                }, completeAction, cancellationToken);
+            }
+            catch (OperationCanceledException e)
+            {
+                Debug.Log($"[TweenScale cancel]: " + e);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+        }
+        // renderer
+        public static async Task TweenRendererColor(Renderer renderer, EzEaseType easeType, Color to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            try
+            {
+                Color from = renderer.material.color;
+                await TweenAct(easeType, from, to, time, (v) =>
+                {
+                    renderer.material.color = v;
+                }, completeAction, cancellationToken);
+            }
+            catch (OperationCanceledException e)
+            {
+                Debug.Log($"[TweenRendererColor cancel]: " + e);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+        }
+        // material
+        public static async Task TweenMaterial(Material material, string floatParamName, EzEaseType easeType, float to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            try {
+                float from = material.GetFloat(floatParamName);
+                await TweenAct(easeType, from, to, time, (v) =>
+                {
+                    material.SetFloat(floatParamName, v);
+                }, completeAction, cancellationToken);
+            }
+            catch (OperationCanceledException e)
+            {
+                Debug.Log($"[TweenMaterial cancel]: " + e);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+        }
+        // ui
+        public static async Task TweenUiColor(MaskableGraphic uiElement, EzEaseType easeType, Color to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            try {
+                Color from = uiElement.color;
+                await TweenAct(easeType, from, to, time, (v) =>
+                {
+                    uiElement.color = v;
+                }, completeAction, cancellationToken);
+            }
+            catch (OperationCanceledException e)
+            {
+                Debug.Log($"[TweenUiColor cancel]: " + e);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+        }
+        public static async Task TweenCanvasGroupAlpha(CanvasGroup canvasGroup, EzEaseType easeType, float to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            try {
+                float from = canvasGroup.alpha;
+                await TweenAct(easeType, from, to, time, (v) =>
+                {
+                    canvasGroup.alpha = v;
+                }, completeAction, cancellationToken);
+            }
+            catch (OperationCanceledException e)
+            {
+                Debug.Log($"[TweenCanvasGroupAlpha cancel]: " + e);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+        }
+
+        // ----------
+        // AnimationCurve
+        public static async Task TweenPosition(Transform transform, AnimationCurve animationCurve, Vector3 to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            try
+            {
+                Vector3 from = transform.position;
+                await TweenAct(animationCurve, from, to, time, (v) =>
+                {
+                    transform.position = v;
+                }, completeAction, cancellationToken);
+            }
+            catch (OperationCanceledException e)
+            {
+                Debug.Log($"[TweenPosition cancel]: " + e);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+        }
+        public static async Task TweenLocalPosition(Transform transform, AnimationCurve animationCurve, Vector3 to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            try
+            {
+                Vector3 from = transform.localPosition;
+                await TweenAct(animationCurve, from, to, time, (v) =>
+                {
+                    transform.localPosition = v;
+                }, completeAction, cancellationToken);
+            }
+            catch (OperationCanceledException e)
+            {
+                Debug.Log($"[TweenLocalPosition cancel]: " + e);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+        }
+        public static async Task TweenRotation(Transform transform, AnimationCurve animationCurve, Quaternion to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            try
+            {
+                Quaternion from = transform.rotation;
+                await TweenAct(animationCurve, from, to, time, (v) =>
+                {
+                    transform.rotation = v;
+                }, completeAction, cancellationToken);
+            }
+            catch (OperationCanceledException e)
+            {
+                Debug.Log($"[TweenRotation cancel]: " + e);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+        }
+        public static async Task TweenLocalRotation(Transform transform, AnimationCurve animationCurve, Quaternion to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            try
+            {
+                Quaternion from = transform.localRotation;
+                await TweenAct(animationCurve, from, to, time, (v) =>
+                {
+                    transform.localRotation = v;
+                }, completeAction, cancellationToken);
+            }
+            catch (OperationCanceledException e)
+            {
+                Debug.Log($"[TweenLocalRotation cancel]: " + e);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+        }
+
+        public static async Task TweenScale(Transform transform, AnimationCurve animationCurve, Vector3 to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            try
+            {
+                Vector3 from = transform.localScale;
+                await TweenAct(animationCurve, from, to, time, (v) =>
+                {
+                    transform.localScale = v;
+                }, completeAction, cancellationToken);
+            }
+            catch (OperationCanceledException e)
+            {
+                Debug.Log($"[TweenScale cancel]: " + e);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+        }
+        // renderer
+        public static async Task TweenRendererColor(Renderer renderer, AnimationCurve animationCurve, Color to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            try
+            {
+                Color from = renderer.material.color;
+                await TweenAct(animationCurve, from, to, time, (v) =>
+                {
+                    renderer.material.color = v;
+                }, completeAction, cancellationToken);
+            }
+            catch (OperationCanceledException e)
+            {
+                Debug.Log($"[TweenRendererColor cancel]: " + e);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+        }
+        // material
+        public static async Task TweenMaterial(Material material, string floatParamName, AnimationCurve animationCurve, float to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            try
+            {
+                float from = material.GetFloat(floatParamName);
+                await TweenAct(animationCurve, from, to, time, (v) =>
+                {
+                    material.SetFloat(floatParamName, v);
+                }, completeAction, cancellationToken);
+            }
+            catch (OperationCanceledException e)
+            {
+                Debug.Log($"[TweenMaterial cancel]: " + e);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+        }
+        // ui
+        public static async Task TweenUiColor(MaskableGraphic uiElement, AnimationCurve animationCurve, Color to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            try
+            {
+                Color from = uiElement.color;
+                await TweenAct(animationCurve, from, to, time, (v) =>
+                {
+                    uiElement.color = v;
+                }, completeAction, cancellationToken);
+            }
+            catch (OperationCanceledException e)
+            {
+                Debug.Log($"[TweenUiColor cancel]: " + e);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+        }
+        public static async Task TweenCanvasGroupAlpha(CanvasGroup canvasGroup, AnimationCurve animationCurve, float to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            try
+            {
+                float from = canvasGroup.alpha;
+                await TweenAct(animationCurve, from, to, time, (v) =>
+                {
+                    canvasGroup.alpha = v;
+                }, completeAction, cancellationToken);
+            }
+            catch (OperationCanceledException e)
+            {
+                Debug.Log($"[TweenCanvasGroupAlpha cancel]: " + e);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+        }
+        #endregion
+
     }
 }
