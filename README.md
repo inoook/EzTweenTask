@@ -7,6 +7,7 @@ Vector3 to = Random.insideUnitSphere * Random.Range(0, 5f);
 await EzTween.TweenLocalPosition(targetTrans, EzEaseType.Linear, to, time);
 ```
 ```cs
+float time = Random.Range(0.5f, 2f);
 Color to = Random.ColorHSV();
 await EzTween.TweenRendererColor(renderer, EzEaseType.Linear, to, time);
 ```
