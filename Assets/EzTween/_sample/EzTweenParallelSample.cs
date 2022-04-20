@@ -30,11 +30,13 @@ public class EzTweenParallelSample : MonoBehaviour
         count++;
         count %= 2;
 
+        var token = cancellationTokenSource.Token;
+
         Color colorTo = (count == 0) ? Color.red : Color.green;
-        Task task1 = EzTween.TweenRendererColor(targetRenderer, ezEaseType, colorTo, 2, cancellationTokenSource.Token, () => { Debug.Log("color.complete"); });
+        Task task1 = EzTween.TweenRendererColor(targetRenderer, ezEaseType, colorTo, 2, token, () => { Debug.Log("color.complete"); });
 
         Vector3 posTo = (count == 0) ? new Vector3(0, 5, 0) : new Vector3(5, 0, 0);
-        Task task2 = EzTween.TweenLocalPosition(targetTrans, ezEaseType, posTo, 3, cancellationTokenSource.Token, () => { Debug.Log("pos.complete"); });
+        Task task2 = EzTween.TweenLocalPosition(targetTrans, ezEaseType, posTo, 3, token, () => { Debug.Log("pos.complete"); });
 
         //await Task.WhenAny(task1, task2); // ‚Ç‚ê‚©‚ª‚ªI—¹
         await Task.WhenAll(task1, task2); // ‘S‚ÄI—¹

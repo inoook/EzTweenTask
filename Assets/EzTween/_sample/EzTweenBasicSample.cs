@@ -68,6 +68,16 @@ public class EzTweenBasicSample : MonoBehaviour
 
         Debug.Log("RandomScaleTweenScaleAnimationCurve.Complete");
     }
+
+    async Task Test()
+    {
+        Renderer renderer = targetTrans.GetComponent<Renderer>();
+
+        Color to = Random.ColorHSV();
+        float time = 1;
+        await EzTween.TweenRendererColor(renderer, EzEaseType.Linear, to, time);
+    }
+
     public void DrawGUI()
     {
         GUILayout.Label(this.GetType().Name);

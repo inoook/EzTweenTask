@@ -641,10 +641,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1546423691}
+  - component: {fileID: 1546423693}
   - component: {fileID: 1546423692}
   - component: {fileID: 1546423689}
   - component: {fileID: 1546423690}
-  - component: {fileID: 1546423693}
   m_Layer: 0
   m_Name: EzTweenSample
   m_TagString: Untagged
