@@ -65,6 +65,8 @@ namespace Ez
         }
 
         // 旧バージョンの関数名は Run にしていたが StartTween へ関数名変更
+        // ----------
+        // EzEaseType
         public async Task StartTween(EzEaseType easeType, float from, float to, float time, Action<float> updateAction, Action completeAction = null, CancellationToken cancellationToken = default)
         {
             cancellationTokenSrc = GetCancellationTokenSource(cancellationToken);
@@ -78,37 +80,49 @@ namespace Ez
         {
             cancellationTokenSrc = GetCancellationTokenSource(cancellationToken);
             await EzTween.TweenAct(easeType, from, to, time, updateAction, completeAction, cancellationTokenSrc.Token);
-            //if (cancellationTokenSrc.IsCancellationRequested)
-            //{
-            //    cancellationTokenSrc = null;
-            //}
         }
         public async Task StartTween(EzEaseType easeType, Vector2 from, Vector2 to, float time, Action<Vector2> updateAction, Action completeAction = null, CancellationToken cancellationToken = default)
         {
             cancellationTokenSrc = GetCancellationTokenSource(cancellationToken);
             await EzTween.TweenAct(easeType, from, to, time, updateAction, completeAction, cancellationTokenSrc.Token);
-            //if (cancellationTokenSrc.IsCancellationRequested)
-            //{
-            //    cancellationTokenSrc = null;
-            //}
         }
         public async Task StartTween(EzEaseType easeType, Color from, Color to, float time, Action<Color> updateAction, Action completeAction = null, CancellationToken cancellationToken = default)
         {
             cancellationTokenSrc = GetCancellationTokenSource(cancellationToken);
             await EzTween.TweenAct(easeType, from, to, time, updateAction, completeAction, cancellationTokenSrc.Token);
-            //if (cancellationTokenSrc.IsCancellationRequested)
-            //{
-            //    cancellationTokenSrc = null;
-            //}
         }
         public async Task StartTween(EzEaseType easeType, Quaternion from, Quaternion to, float time, Action<Quaternion> updateAction, Action completeAction = null, CancellationToken cancellationToken = default)
         {
             cancellationTokenSrc = GetCancellationTokenSource(cancellationToken);
             await EzTween.TweenAct(easeType, from, to, time, updateAction, completeAction, cancellationTokenSrc.Token);
-            //if (cancellationTokenSrc.IsCancellationRequested)
-            //{
-            //    cancellationTokenSrc = null;
-            //}
+        }
+
+        // ----------
+        // animationCurve
+        public async Task StartTween(AnimationCurve animationCurve, float from, float to, float time, Action<float> updateAction, Action completeAction = null, CancellationToken cancellationToken = default)
+        {
+            cancellationTokenSrc = GetCancellationTokenSource(cancellationToken);
+            await EzTween.TweenAct(animationCurve, from, to, time, updateAction, completeAction, cancellationTokenSrc.Token);
+        }
+        public async Task StartTween(AnimationCurve animationCurve, Vector3 from, Vector3 to, float time, Action<Vector3> updateAction, Action completeAction = null, CancellationToken cancellationToken = default)
+        {
+            cancellationTokenSrc = GetCancellationTokenSource(cancellationToken);
+            await EzTween.TweenAct(animationCurve, from, to, time, updateAction, completeAction, cancellationTokenSrc.Token);
+        }
+        public async Task StartTween(AnimationCurve animationCurve, Vector2 from, Vector2 to, float time, Action<Vector2> updateAction, Action completeAction = null, CancellationToken cancellationToken = default)
+        {
+            cancellationTokenSrc = GetCancellationTokenSource(cancellationToken);
+            await EzTween.TweenAct(animationCurve, from, to, time, updateAction, completeAction, cancellationTokenSrc.Token);
+        }
+        public async Task StartTween(AnimationCurve animationCurve, Color from, Color to, float time, Action<Color> updateAction, Action completeAction = null, CancellationToken cancellationToken = default)
+        {
+            cancellationTokenSrc = GetCancellationTokenSource(cancellationToken);
+            await EzTween.TweenAct(animationCurve, from, to, time, updateAction, completeAction, cancellationTokenSrc.Token);
+        }
+        public async Task StartTween(AnimationCurve animationCurve, Quaternion from, Quaternion to, float time, Action<Quaternion> updateAction, Action completeAction = null, CancellationToken cancellationToken = default)
+        {
+            cancellationTokenSrc = GetCancellationTokenSource(cancellationToken);
+            await EzTween.TweenAct(animationCurve, from, to, time, updateAction, completeAction, cancellationTokenSrc.Token);
         }
 
         public void Cancel()
@@ -120,6 +134,8 @@ namespace Ez
         }
 
         // 使いやすくするためのショートカット
+        // ----------
+        // EzEaseType
         public async Task StartTweenPosition(Transform transform, EzEaseType easeType, Vector3 to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
         {
             Vector3 from = transform.position;
@@ -219,6 +235,108 @@ namespace Ez
                 canvasGroup.alpha = v;
             }, completeAction, cancellationToken);
         }
+
+        // ----------
+        // AnimationCurve
+        public async Task StartTweenPosition(Transform transform, AnimationCurve animationCurve, Vector3 to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            Vector3 from = transform.position;
+            await StartTween(animationCurve, from, to, time, (v) =>
+            {
+                transform.position = v;
+            }, completeAction, cancellationToken);
+        }
+        public async Task StartTweenLocalPosition(Transform transform, AnimationCurve animationCurve, Vector3 to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            Vector3 from = transform.localPosition;
+            await StartTween(animationCurve, from, to, time, (v) =>
+            {
+                transform.localPosition = v;
+            }, completeAction, cancellationToken);
+        }
+        public async Task StartTweenEulerAngles(Transform transform, AnimationCurve animationCurve, Vector3 to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            Vector3 from = transform.position;
+            await StartTween(animationCurve, from, to, time, (v) =>
+            {
+                transform.eulerAngles = v;
+            }, completeAction, cancellationToken);
+        }
+        public async Task StartTweenLocalEulerAngles(Transform transform, AnimationCurve animationCurve, Vector3 to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            Vector3 from = transform.position;
+            await StartTween(animationCurve, from, to, time, (v) =>
+            {
+                transform.localEulerAngles = v;
+            }, completeAction, cancellationToken);
+        }
+        public async Task StartTweenRotation(Transform transform, AnimationCurve animationCurve, Quaternion to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            Quaternion from = transform.rotation;
+            await StartTween(animationCurve, from, to, time, (v) =>
+            {
+                transform.rotation = v;
+            }, completeAction, cancellationToken);
+        }
+        public async Task StartTweenLocalRotation(Transform transform, AnimationCurve animationCurve, Quaternion to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            Quaternion from = transform.localRotation;
+            await StartTween(animationCurve, from, to, time, (v) =>
+            {
+                transform.localRotation = v;
+            }, completeAction, cancellationToken);
+        }
+        public async Task StartTweenScale(Transform transform, AnimationCurve animationCurve, Vector3 to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            Vector3 from = transform.localScale;
+            await StartTween(animationCurve, from, to, time, (v) =>
+            {
+                transform.localScale = v;
+            }, completeAction, cancellationToken);
+        }
+        // renderer
+        public async Task StartTweenRendererColor(Renderer renderer, AnimationCurve animationCurve, Color to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            Color from = renderer.material.color;
+            await StartTween(animationCurve, from, to, time, (v) =>
+            {
+                renderer.material.color = v;
+            }, completeAction, cancellationToken);
+        }
+        // material
+        public async Task StartTweenMaterial(Material material, string paramName, AnimationCurve animationCurve, float to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            float from = material.GetFloat(paramName);
+            await StartTween(animationCurve, from, to, time, (v) =>
+            {
+                material.SetFloat(paramName, v);
+            }, completeAction, cancellationToken);
+        }
+        public async Task StartTweenMaterial(Material material, string paramName, AnimationCurve animationCurve, Color to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            Color from = material.GetColor(paramName);
+            await StartTween(animationCurve, from, to, time, (v) =>
+            {
+                material.SetColor(paramName, v);
+            }, completeAction, cancellationToken);
+        }
+        // ui
+        public async Task StartTweenUiColor(MaskableGraphic uiElement, AnimationCurve animationCurve, Color to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            Color from = uiElement.color;
+            await StartTween(animationCurve, from, to, time, (v) =>
+            {
+                uiElement.color = v;
+            }, completeAction, cancellationToken);
+        }
+        public async Task StartTweenCanvasGroupAlpha(CanvasGroup canvasGroup, AnimationCurve animationCurve, float to, float time, CancellationToken cancellationToken = default, Action completeAction = null)
+        {
+            float from = canvasGroup.alpha;
+            await StartTween(animationCurve, from, to, time, (v) =>
+            {
+                canvasGroup.alpha = v;
+            }, completeAction, cancellationToken);
+        }
     }
 
     /// <summary>
@@ -293,29 +411,9 @@ namespace Ez
         public static void CancelAll()
         {
             EzTweenBehav.Instance.CancelAllTween();
-
-            // ---
-            //Debug.LogWarning($"CancelAll: {tweenList.Count}");
-            // Note: foreach を使うと、DelayにTokenを渡しているとエラーが発生するときがある
-            // for であればエラーは起きない
-            // Delay にToken 渡さないでforeachが安全そう？
-
-            //foreach (var m in tweenList)
-            //{
-            //    m.Cancel();
-            //}
-
-            //Debug.LogWarning($"[CancelAll] tweenList.Count: {tweenList.Count}");
-            //for (int i = tweenList.Count-1; i >= 0; i--)
-            //{
-            //    var m = tweenList[i];
-            //    m.Cancel();
-            //}
-            //tweenList.Clear();
         }
 
         // ----------
-        // easeType tween
         // それぞれの型でのショートカット
         // EzEaseType / float
         public static async Task TweenAct(EzEaseType easeType, float from, float to, float time, Action<float> updateAction, Action completeAction = null, CancellationToken cancellationToken = default)
@@ -367,7 +465,8 @@ namespace Ez
                 updateAction(p);
             }, completeAction, easeType, null, cancellationToken);
         }
-        //
+
+        // ----------
         // AnimationCurve tween
         // Tween をアニメーションカーブで定義
         // float
@@ -427,7 +526,7 @@ namespace Ez
             await TweenAsync(from, to, time, updateAction, completeAction, easeType, curve, token);
         }
 
-        public static Func<float, float> GetEaseAction(EzEaseType type)
+        static Func<float, float> GetEaseAction(EzEaseType type)
         {
             switch (type)
             {
