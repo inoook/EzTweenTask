@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
@@ -15,7 +15,7 @@ public class EzTweenBasicSample : MonoBehaviour
     CancellationTokenSource cancellationTokenSource = null;
 
     /// <summary>
-    /// Update‚ğ’è‹`
+    /// Updateã‚’å®šç¾©
     /// </summary>
     /// <param name="time"></param>
     /// <returns></returns>
@@ -36,7 +36,7 @@ public class EzTweenBasicSample : MonoBehaviour
     }
 
     /// <summary>
-    ///g—p•p“x‚Ì‚‚¢ƒvƒƒpƒeƒB—p‚ÌƒVƒ‡[ƒgƒJƒbƒgBtargetTrans ‚ğw’èBupdate‚Ì’†‚ÍEzTween“à‚É‹LqÏ‚İ
+    ///ä½¿ç”¨é »åº¦ã®é«˜ã„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ç”¨ã®ã‚·ãƒ§ãƒ¼ãƒˆã‚«ãƒƒãƒˆã€‚targetTrans ã‚’æŒ‡å®šã€‚updateã®ä¸­ã¯EzTweenå†…ã«è¨˜è¿°æ¸ˆã¿
     /// </summary>
     /// <param name="time"></param>
     /// <returns></returns>
@@ -81,7 +81,7 @@ public class EzTweenBasicSample : MonoBehaviour
     public void DrawGUI()
     {
         GUILayout.Label(this.GetType().Name);
-        GUILayout.Label("EzTween.Tween ‚ğg—p‚µ‚½Šî–{“I‚ÈƒTƒ“ƒvƒ‹");
+        GUILayout.Label("EzTween.Tween ã‚’ä½¿ç”¨ã—ãŸåŸºæœ¬çš„ãªã‚µãƒ³ãƒ—ãƒ«");
         if (GUILayout.Button("RandomTweenAct"))
         {
             _ = RandomTweenAct();

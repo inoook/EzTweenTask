@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -21,7 +21,7 @@ public class EzTweenChainSample : MonoBehaviour
         cancellationTokenSource = new CancellationTokenSource();
     }
 
-    // ˆê‚Â‚Ìƒ^ƒXƒN‚ªI‚í‚Á‚ÄŸ‚Ìƒ^ƒXƒN‚Ö
+    // ä¸€ã¤ã®ã‚¿ã‚¹ã‚¯ãŒçµ‚ã‚ã£ã¦æ¬¡ã®ã‚¿ã‚¹ã‚¯ã¸
     async Task ActTask_Chain()
     {
         Cancel();

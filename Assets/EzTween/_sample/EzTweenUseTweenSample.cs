@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -7,8 +7,8 @@ using UnityEngine.UI;
 using Ez;
 
 /// <summary>
-/// Tween tween = new Tween(); ‚ğg—p‚µ‚½ƒTƒ“ƒvƒ‹
-/// tween?.Cancel(); ‚ÅƒLƒƒƒ“ƒZƒ‹‚Å‚«‚é‚Ì‚ª—˜“_
+/// Tween tween = new Tween(); ã‚’ä½¿ç”¨ã—ãŸã‚µãƒ³ãƒ—ãƒ«
+/// tween?.Cancel(); ã§ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã§ãã‚‹ã®ãŒåˆ©ç‚¹
 /// </summary>
 public class EzTweenUseTweenSample : MonoBehaviour
 {
@@ -47,7 +47,7 @@ public class EzTweenUseTweenSample : MonoBehaviour
         count %= 2;
         Vector3 to = (count == 0) ? new Vector3(0,5,0) : new Vector3(5,0,0);
         await positionTween.StartTweenLocalPosition(targetTrans, ezEaseType, to, time);
-        Debug.LogWarning("Position.Complete"); // await‚ğg—p‚µ‚Ä‚¢‚é‚½‚ßtweenI—¹‚ÉÀs‚³‚ê‚éBpositionTween.Cancel‚µ‚Ä‚àÀs‚³‚ê‚éB
+        Debug.LogWarning("Position.Complete"); // awaitã‚’ä½¿ç”¨ã—ã¦ã„ã‚‹ãŸã‚tweençµ‚äº†æ™‚ã«å®Ÿè¡Œã•ã‚Œã‚‹ã€‚positionTween.Cancelã—ã¦ã‚‚å®Ÿè¡Œã•ã‚Œã‚‹ã€‚
     }
 
     CancellationTokenSource cancellationTokenSource = null;
@@ -66,7 +66,7 @@ public class EzTweenUseTweenSample : MonoBehaviour
         count %= 2;
         Vector3 to = (count == 0) ? new Vector3(0, 5, 0) : new Vector3(5, 0, 0);
         await positionTween.StartTweenLocalPosition(targetTrans, ezEaseType, to, time, cancellationTokenSource.Token);
-        Debug.LogWarning("PositionManualCancel.Complete"); // await‚ğg—p‚µ‚Ä‚¢‚é‚½‚ßtweenI—¹‚ÉÀs‚³‚ê‚éBpositionTween.Cancel‚µ‚Ä‚àÀs‚³‚ê‚éB
+        Debug.LogWarning("PositionManualCancel.Complete"); // awaitã‚’ä½¿ç”¨ã—ã¦ã„ã‚‹ãŸã‚tweençµ‚äº†æ™‚ã«å®Ÿè¡Œã•ã‚Œã‚‹ã€‚positionTween.Cancelã—ã¦ã‚‚å®Ÿè¡Œã•ã‚Œã‚‹ã€‚
     }
 
     void Act_StartTweenLocalPosition(float time = 2)
@@ -76,7 +76,7 @@ public class EzTweenUseTweenSample : MonoBehaviour
         _ = positionTween.StartTweenLocalPosition(targetTrans, ezEaseType, to, time, default, () => {
             Debug.LogWarning("complete");
         });
-        Debug.LogWarning("Act_StartTweenLocalPosition.Complete");// StartTweenLocalPositionÀs‚ÉÀs‚³‚ê‚é
+        Debug.LogWarning("Act_StartTweenLocalPosition.Complete");// StartTweenLocalPositionå®Ÿè¡Œæ™‚ã«å®Ÿè¡Œã•ã‚Œã‚‹
     }
 
     // ----------
@@ -84,7 +84,7 @@ public class EzTweenUseTweenSample : MonoBehaviour
     async Task ActTask_StartTweenRotation(float time = 2)
     {
         rotationlTween?.Cancel();
-        Quaternion to = Quaternion.AngleAxis(90, Vector3.up) * targetTrans.rotation;// Às‚Ìp¨‚©‚çY²90“x‰ñ“]
+        Quaternion to = Quaternion.AngleAxis(90, Vector3.up) * targetTrans.rotation;// å®Ÿè¡Œæ™‚ã®å§¿å‹¢ã‹ã‚‰Yè»¸90åº¦å›è»¢
         await rotationlTween.StartTweenRotation(targetTrans, ezEaseType, to, time, default, () => {
             Debug.LogWarning("complete");
         });
@@ -156,7 +156,7 @@ public class EzTweenUseTweenSample : MonoBehaviour
     public void DrawGUI()
     {
         GUILayout.Label(this.GetType().Name);
-        GUILayout.Label("tween ‚ğg—p‚µ‚½ƒTƒ“ƒvƒ‹");
+        GUILayout.Label("tween ã‚’ä½¿ç”¨ã—ãŸã‚µãƒ³ãƒ—ãƒ«");
         if (GUILayout.Button("ActTask_StartTweenLocalPosition"))
         {
             _ = ActTask_StartTweenLocalPosition();

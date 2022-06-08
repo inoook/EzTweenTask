@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -22,10 +22,10 @@ public class EzTweenParallelSample : MonoBehaviour
         cancellationTokenSource = new CancellationTokenSource();
     }
 
-    // ƒ^ƒXƒN‚ğ•½s‚µ‚ÄÀs
+    // ã‚¿ã‚¹ã‚¯ã‚’å¹³è¡Œã—ã¦å®Ÿè¡Œ
     async Task ActTask_Parallel()
     {
-        Cancel(); // Às’†‚ğƒLƒƒƒ“ƒZƒ‹
+        Cancel(); // å®Ÿè¡Œä¸­ã‚’ã‚­ãƒ£ãƒ³ã‚»ãƒ«
 
         count++;
         count %= 2;
@@ -38,8 +38,8 @@ public class EzTweenParallelSample : MonoBehaviour
         Vector3 posTo = (count == 0) ? new Vector3(0, 5, 0) : new Vector3(5, 0, 0);
         Task task2 = EzTween.TweenLocalPosition(targetTrans, ezEaseType, posTo, 3, token, () => { Debug.Log("pos.complete"); });
 
-        //await Task.WhenAny(task1, task2); // ‚Ç‚ê‚©‚ª‚ªI—¹
-        await Task.WhenAll(task1, task2); // ‘S‚ÄI—¹
+        //await Task.WhenAny(task1, task2); // ã©ã‚Œã‹ãŒãŒçµ‚äº†
+        await Task.WhenAll(task1, task2); // å…¨ã¦çµ‚äº†
 
         Debug.Log("ActTask_Parallel.Complete");
     }

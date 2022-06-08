@@ -1,9 +1,9 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ƒtƒŒ[ƒ€—‚¿‚µ‚È‚¢‚©Šm”F‚Ì‚½‚ß‚Ìƒ_ƒ~[ƒAƒjƒ
+/// ãƒ•ãƒ¬ãƒ¼ãƒ è½ã¡ã—ãªã„ã‹ç¢ºèªã®ãŸã‚ã®ãƒ€ãƒŸãƒ¼ã‚¢ãƒ‹ãƒ¡
 /// </summary>
 public class TestAnim : MonoBehaviour
 {
