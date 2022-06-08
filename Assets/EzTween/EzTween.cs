@@ -612,10 +612,11 @@ namespace Ez
                 if (d != 0)
                 {
                     Func<float, float> easeAct = GetEaseAction(easeType);
-                    //while (Application.isPlaying &&  t < time)
-                    while (t < time)
-                        {
+                    while (Application.isPlaying && t < time)
+                    //while (t < time)
+                    {
                         //t += Time.deltaTime;
+                        //float delta = Time.time - t;
                         t = Time.time - startTime;
                         float per = t / time;
                         if (per >= 1) {
@@ -635,8 +636,9 @@ namespace Ez
                             per = easeAct(per);
                         }
 
+                        //await Task.Delay(Mathf.Max(2, (int)(Time.deltaTime * 1000)));
                         //await Task.Delay((int)(Time.deltaTime*1000));
-                        await Task.Delay(33, _token);
+                        await Task.Delay(20, _token);
                         //await Task.Delay(33, cancellToken);  // tokenを渡すと EzTween.CancelAll() で foreachをしようしているとエラーが発生する時がある。forだとエラーが起きない？
 
                         _token.ThrowIfCancellationRequested();
