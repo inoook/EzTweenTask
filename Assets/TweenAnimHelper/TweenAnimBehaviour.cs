@@ -120,7 +120,6 @@ public class TweenAnimBehaviour : MonoBehaviour
             }
         }
 
-        //
         public async Task Act(CancellationTokenSource cancellationTokenSource)
         {
             if (!Application.isPlaying) { return; }
@@ -136,88 +135,34 @@ public class TweenAnimBehaviour : MonoBehaviour
             // それぞれのtypeで使用するtweenを変更
             if (type == TYPE.POSITION)
             {
-                //Transform _trans = target.transform;
-                //await TweenAct(ezEaseType, animationCurve, _trans.localPosition, to_Vec3, time, (Vector3 v) =>
-                //{
-                //    _trans.localPosition = v;
-                //}, null, cancellationTokenSource.Token);
                 await TweenPositionAct(ezEaseType, animationCurve, to_Vec3, time, cancellationTokenSource);
             }
             else if (type == TYPE.POSITION_RELATIVE)
             {
-                //Transform _trans = target.transform;
                 Vector3 _to = defaultVec3 + to_Vec3;
-                //await TweenAct(ezEaseType, animationCurve, _trans.localPosition, _to, time, (Vector3 v) =>
-                //{
-                //    _trans.localPosition = v;
-                //}, null, cancellationTokenSource.Token);
                 await TweenPositionAct(ezEaseType, animationCurve, _to, time, cancellationTokenSource);
             }
             else if (type == TYPE.__POSITION_REVERT)
             {
-                //Transform _trans = target.transform;
                 to_Vec3 = defaultVec3;
-                //await TweenAct(ezEaseType, animationCurve, _trans.localPosition, to_Vec3, time, (Vector3 v) =>
-                //{
-                //    _trans.localPosition = v;
-                //}, null, cancellationTokenSource.Token);
                 await TweenPositionAct(ezEaseType, animationCurve, to_Vec3, time, cancellationTokenSource);
             }
             else if (type == TYPE.SCALE)
             {
-                //Transform _trans = target.transform;
-                //await TweenAct(ezEaseType, animationCurve, _trans.localScale, to_Vec3, time, (Vector3 v) =>
-                //{
-                //    _trans.localScale = v;
-                //}, null, cancellationTokenSource.Token);
                 await TweenScaleAct(ezEaseType, animationCurve, to_Vec3, time, cancellationTokenSource);
             }
             else if (type == TYPE.SCALE_RELATIVE)
             {
-                //Transform _trans = target.transform;
                 Vector3 _to = defaultVec3 + to_Vec3;
-                //await TweenAct(ezEaseType, animationCurve, _trans.localScale, _to, time, (Vector3 v) =>
-                //{
-                //    _trans.localScale = v;
-                //}, null, cancellationTokenSource.Token);
                 await TweenScaleAct(ezEaseType, animationCurve, _to, time, cancellationTokenSource);
             }
             else if (type == TYPE.__SCALE_REVERT)
             {
-                Transform _trans = target.transform;
                 Vector3 to_Vec3 = defaultVec3;
-                //await TweenAct(ezEaseType, animationCurve, _trans.localScale, to_Vec3, time, (Vector3 v) =>
-                //{
-                //    _trans.localScale = v;
-                //}, null, cancellationTokenSource.Token);
                 await TweenScaleAct(ezEaseType, animationCurve, to_Vec3, time, cancellationTokenSource);
             }
             else if (type == TYPE.COLOR)
             {
-                //Renderer _target = target.GetComponent<Renderer>();
-                //if (_target != null)
-                //{
-                //    Color from = _target.material.color;
-                //    await TweenAct(ezEaseType, animationCurve, from, to_Color, time, (Color v) =>
-                //    {
-                //        _target.material.color = v;
-                //    }, null, cancellationTokenSource.Token);
-                //}
-                //else
-                //{
-                //    MaskableGraphic _target_uGUI = target.GetComponent<MaskableGraphic>();
-                //    if (_target_uGUI != null)
-                //    {
-                //        await TweenAct(ezEaseType, animationCurve, _target_uGUI.color, to_Color, time, (Color v) =>
-                //        {
-                //            _target_uGUI.color = v;
-                //        }, null, cancellationTokenSource.Token);
-                //    }
-                //    else
-                //    {
-                //        _NoRendererError();
-                //    }
-                //}
                 await TweenColorAct(ezEaseType, animationCurve, to_Color, time, cancellationTokenSource);
             }
             else if (type == TYPE.__COLOR_REVERT)
@@ -227,44 +172,6 @@ public class TweenAnimBehaviour : MonoBehaviour
             }
             else if (type == TYPE.ALPHA)
             {
-                //Renderer _target = target.GetComponent<Renderer>();
-                //if (_target != null)
-                //{
-                //    Color _color = _target.material.color;
-                //    await TweenAct(ezEaseType, animationCurve, _color.a, to_V, time, (float v) =>
-                //    {
-                //        _color.a = v;
-                //        _target.material.color = _color;
-                //    }, null, cancellationTokenSource.Token);
-                //}
-                //else
-                //{
-                //    MaskableGraphic _target_uGUI = target.GetComponent<MaskableGraphic>();
-                //    if (_target_uGUI != null)
-                //    {
-                //        Color _color = _target_uGUI.color;
-                //        await TweenAct(ezEaseType, animationCurve, _color.a, to_V, time, (float v) =>
-                //        {
-                //            _color.a = v;
-                //            _target_uGUI.color = _color;
-                //        }, null, cancellationTokenSource.Token);
-                //    }
-                //    else
-                //    {
-                //        CanvasGroup _target_canvas = target.GetComponent<CanvasGroup>();
-                //        if (_target_canvas != null)
-                //        {
-                //            await TweenAct(ezEaseType, animationCurve, _target_canvas.alpha, to_V, time, (float v) =>
-                //            {
-                //                _target_canvas.alpha = v;
-                //            }, null, cancellationTokenSource.Token);
-                //        }
-                //        else
-                //        {
-                //            _NoRendererError();
-                //        }
-                //    }
-                //}
                 await TweenAlphaAct(ezEaseType, animationCurve, to_V, time, cancellationTokenSource);
             }
             else if (type == TYPE.__ALPHA_REVERT)
@@ -275,6 +182,9 @@ public class TweenAnimBehaviour : MonoBehaviour
 
             isPlaying = false;
         }
+
+        // -----
+        // tweenを使用するためのショートカット
 
         async Task TweenPositionAct(EzEaseType ezEaseType, AnimationCurve animationCurve, Vector3 to_Vec3, float time, CancellationTokenSource cancellationTokenSource)
         {
