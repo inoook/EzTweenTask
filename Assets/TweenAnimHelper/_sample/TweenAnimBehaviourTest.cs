@@ -47,7 +47,11 @@ public class TweenAnimBehaviourTest : MonoBehaviour
         GUILayout.Label("tweenAnimCombiner");
         if (GUILayout.Button("Play "))
         {
-            _ = PlayCombiner();
+            _ = PlayForwardCombiner(true);
+        }
+        if (GUILayout.Button("Play Reverse"))
+        {
+            _ = PlayForwardCombiner(false);
         }
         if (GUILayout.Button("Cancel"))
         {
@@ -69,10 +73,10 @@ public class TweenAnimBehaviourTest : MonoBehaviour
         Debug.LogWarning("Play_Complete");
     }
 
-    async Task PlayCombiner()
+    async Task PlayForwardCombiner(bool isForward = true)
     {
         // 順に再生
-        await tweenAnimCombiner.Play();
+        await tweenAnimCombiner.PlayForward(isForward);
         Debug.LogWarning("PlayCombiner_Complete");
     }
 }

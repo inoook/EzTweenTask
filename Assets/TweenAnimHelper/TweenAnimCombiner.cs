@@ -9,16 +9,19 @@ using UnityEngine;
 [AddComponentMenu("AnimationHelper/TweenAnimCombiners")]
 public class TweenAnimCombiner : MonoBehaviour
 {
+    [Header("上から順に実行")]
     [SerializeField] TweenAnimBehaviour[] tweenAnimBehaviours = null;
 
     [ContextMenu("Play")]
-    public async Task Play()
+    public async Task PlayForward(bool isForward = true)
     {
         if (!Application.isPlaying) { return; }
 
-        foreach(var tweenAnim in tweenAnimBehaviours)
+        for (int i = 0; i < tweenAnimBehaviours.Length; i++)
         {
-            await tweenAnim.Play();
+            int index = isForward ? i : (tweenAnimBehaviours.Length - 1 - i);
+            var tweenAnim = tweenAnimBehaviours[index];
+            await tweenAnim.PlayForward(isForward);
         }
         Debug.LogWarning("TweenAnimCombiner.Play_Complete");
     }

@@ -413,7 +413,7 @@ MonoBehaviour:
     to_Vec3: {x: 2, y: 2, z: 2}
     to_Color: {r: 1, g: 1, b: 1, a: 0}
     to_V: 0.5
-  tweens:
+  group:
     chains:
     - enable: 1
       time: 1
@@ -444,10 +444,28 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       target: {fileID: 131396005}
-      type: 10
+      type: 6
+      animType: 1
       to_Vec3: {x: 0, y: 0, z: 0}
       to_Color: {r: 0, g: 0, b: 0, a: 0}
       to_V: 1
+      isPlaying: 0
+    - enable: 1
+      time: 1
+      delay: 2
+      ezEaseType: 0
+      animationCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      target: {fileID: 1935794181}
+      type: 7
+      animType: 1
+      to_Vec3: {x: 1, y: 0, z: 0}
+      to_Color: {r: 0, g: 0, b: 0, a: 0}
+      to_V: 0
       isPlaying: 0
     - enable: 1
       time: 1
@@ -478,7 +496,8 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       target: {fileID: 876076586}
-      type: 7
+      type: 2
+      animType: 1
       to_Vec3: {x: 0, y: 0, z: 0}
       to_Color: {r: 1, g: 0, b: 0, a: 0.56078434}
       to_V: 0.5
@@ -494,14 +513,15 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       target: {fileID: 1935794181}
-      type: 7
+      type: 2
+      animType: 1
       to_Vec3: {x: 2.79, y: 0, z: 0}
       to_Color: {r: 0, g: 0, b: 0, a: 0}
       to_V: 0
       isPlaying: 0
     - enable: 1
       time: 1
-      delay: 1
+      delay: 5
       ezEaseType: 0
       animationCurve:
         serializedVersion: 2
@@ -510,7 +530,8 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       target: {fileID: 1935794181}
-      type: 9
+      type: 5
+      animType: 1
       to_Vec3: {x: 0, y: 0, z: 0}
       to_Color: {r: 0.07497215, g: 0, b: 1, a: 1}
       to_V: 0
@@ -526,7 +547,8 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       target: {fileID: 1935794181}
-      type: 8
+      type: 0
+      animType: 1
       to_Vec3: {x: 1, y: 0, z: 0}
       to_Color: {r: 0, g: 0, b: 0, a: 0}
       to_V: 0
@@ -544,6 +566,7 @@ MonoBehaviour:
         m_RotationOrder: 4
       target: {fileID: 1935794181}
       type: 2
+      animType: 0
       to_Vec3: {x: -5, y: 0, z: 0}
       to_Color: {r: 0, g: 0, b: 0, a: 0}
       to_V: 0
@@ -560,6 +583,7 @@ MonoBehaviour:
         m_RotationOrder: 4
       target: {fileID: 1935794181}
       type: 7
+      animType: 0
       to_Vec3: {x: 0, y: 0, z: 0}
       to_Color: {r: 0, g: 0, b: 0, a: 0}
       to_V: 0
@@ -594,7 +618,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &607375917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -720,10 +744,10 @@ MonoBehaviour:
   - enable: 1
     target: {fileID: 7323233}
     type: 3
-    to_Vec3: {x: -3.31, y: 0, z: 0}
+    to_Vec3: {x: -2.44, y: 0, z: 0}
     to_Color: {r: 0, g: 0, b: 0, a: 0}
     to_V: 0
-  tweens:
+  group:
     chains:
     - enable: 1
       time: 1
@@ -736,7 +760,8 @@ MonoBehaviour:
         m_PostInfinity: 0
         m_RotationOrder: 0
       target: {fileID: 7323233}
-      type: 7
+      type: 2
+      animType: 1
       to_Vec3: {x: 0, y: 0, z: 0}
       to_Color: {r: 0, g: 0, b: 0, a: 0}
       to_V: 0

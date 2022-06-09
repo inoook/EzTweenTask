@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -37,8 +37,8 @@ public class TemporaryConditionDrawer : PropertyDrawer
             EditorGUI.PropertyField(drawRect, property.FindPropertyRelative("type"), new GUIContent("type"), false);
 
             var actionTypeProperty = property.FindPropertyRelative("type");
-            drawRect.y += EditorGUIUtility.singleLineHeight + 2f;
 
+            drawRect.y += EditorGUIUtility.singleLineHeight + 2f;
             switch ((TweenAnimBehaviour.TemporaryCondition.TYPE)actionTypeProperty.enumValueIndex)
             {
                 case TweenAnimBehaviour.TemporaryCondition.TYPE.POSITION:
