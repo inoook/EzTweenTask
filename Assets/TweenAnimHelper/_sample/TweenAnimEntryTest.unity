@@ -213,9 +213,188 @@ Transform:
   m_GameObject: {fileID: 7323233}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -4.8199997, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 185617077}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &38146935
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 38146937}
+  - component: {fileID: 38146936}
+  m_Layer: 0
+  m_Name: TweenAnimEntryTest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &38146936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38146935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f266c90c1e99494e8bdba06df946816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenAnimEntry: {fileID: 1101732540}
+  drawRect:
+    serializedVersion: 2
+    x: 10
+    y: 10
+    width: 200
+    height: 200
+--- !u!4 &38146937
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38146935}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1101732541}
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &93672912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 93672914}
+  - component: {fileID: 93672913}
+  m_Layer: 0
+  m_Name: TweemAnimSphere
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &93672913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 93672912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f0d74dfdcd014316b30a59a55d39025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playOnStart: 0
+  restoreOnDisable: 0
+  temps:
+  - enable: 1
+    target: {fileID: 7323233}
+    type: 3
+    to_Vec3: {x: -1.93, y: 0, z: 0}
+    to_Color: {r: 0, g: 0, b: 0, a: 0}
+    to_V: 0
+  group:
+    chains:
+    - enable: 1
+      time: 1
+      delay: 0
+      ezEaseType: 0
+      animationCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+      target: {fileID: 7323233}
+      type: 3
+      animType: 0
+      to_Vec3: {x: 0, y: 2.32, z: 0}
+      to_Color: {r: 0, g: 0, b: 0, a: 0}
+      to_V: 0
+      isPlaying: 0
+    - enable: 1
+      time: 1
+      delay: 0
+      ezEaseType: 0
+      animationCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+      target: {fileID: 7323233}
+      type: 3
+      animType: 0
+      to_Vec3: {x: 0, y: -2.32, z: 0}
+      to_Color: {r: 0, g: 0, b: 0, a: 0}
+      to_V: 0
+      isPlaying: 0
+    - enable: 1
+      time: 1
+      delay: 1
+      ezEaseType: 0
+      animationCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+      target: {fileID: 7323233}
+      type: 7
+      animType: 1
+      to_Vec3: {x: 0, y: 0, z: 0}
+      to_Color: {r: 0, g: 0, b: 0, a: 0}
+      to_V: 0
+      isPlaying: 0
+    - enable: 1
+      time: 1
+      delay: 0
+      ezEaseType: 0
+      animationCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+      target: {fileID: 7323233}
+      type: 3
+      animType: 1
+      to_Vec3: {x: 0, y: 0, z: 0}
+      to_Color: {r: 0, g: 0, b: 0, a: 0}
+      to_V: 0
+      isPlaying: 0
+    parallels: []
+  children:
+    chains: []
+    parallels: []
+    isPlayingChains: 0
+    isPlayingParallels: 0
+--- !u!4 &93672914
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 93672912}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 627019678}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &131396005
@@ -299,7 +478,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &200868300
+--- !u!1 &326512032
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -307,231 +486,73 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 200868301}
-  - component: {fileID: 200868302}
+  - component: {fileID: 326512033}
+  - component: {fileID: 326512034}
   m_Layer: 0
-  m_Name: TweenAnimBehaviourTest
+  m_Name: TweemAnimCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &200868301
+--- !u!4 &326512033
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 200868300}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 326512032}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 627019678}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &200868302
+--- !u!114 &326512034
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 200868300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97963e8010f974986b4ec5f30062a264, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tweenAnimCombiner: {fileID: 607375917}
-  drawRect:
-    serializedVersion: 2
-    x: 10
-    y: 10
-    width: 200
-    height: 600
---- !u!1 &279211684
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 279211686}
-  - component: {fileID: 279211685}
-  m_Layer: 0
-  m_Name: TweenAnimBehaviour
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &279211685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 279211684}
+  m_GameObject: {fileID: 326512032}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f0d74dfdcd014316b30a59a55d39025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playOnStart: 1
-  restoreOnDisable: 1
+  playOnStart: 0
+  restoreOnDisable: 0
   temps:
   - enable: 1
-    target: {fileID: 876076586}
+    target: {fileID: 1935794181}
     type: 3
-    to_Vec3: {x: 0, y: 100, z: 0}
-    to_Color: {r: 1, g: 1, b: 1, a: 0}
-    to_V: 0.5
+    to_Vec3: {x: 0, y: -2.87, z: 0}
+    to_Color: {r: 0, g: 0, b: 0, a: 0}
+    to_V: 0
   - enable: 1
     target: {fileID: 1935794181}
     type: 5
-    to_Vec3: {x: 0, y: 0, z: 0}
-    to_Color: {r: 1, g: 0, b: 0, a: 0.54509807}
+    to_Vec3: {x: 0, y: -2.87, z: 0}
+    to_Color: {r: 1, g: 0, b: 0, a: 0}
     to_V: 0
-  - enable: 1
-    target: {fileID: 1935794181}
-    type: 3
-    to_Vec3: {x: 0, y: 5, z: 0}
-    to_Color: {r: 1, g: 1, b: 1, a: 0}
-    to_V: 0
-  - enable: 1
-    target: {fileID: 131396005}
-    type: 6
-    to_Vec3: {x: 0, y: 0, z: 0}
-    to_Color: {r: 1, g: 1, b: 1, a: 0}
-    to_V: 0
-  - enable: 1
-    target: {fileID: 1935794181}
-    type: 1
-    to_Vec3: {x: 2, y: 2, z: 2}
-    to_Color: {r: 1, g: 1, b: 1, a: 0}
-    to_V: 0.5
   group:
     chains:
     - enable: 1
-      time: 1
-      delay: 0
-      ezEaseType: 0
-      animationCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: -1.6039548
-          outSlope: -1.6039548
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0.4449472
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 1.9941342
-          outSlope: 1.9941342
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0.0977214
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      target: {fileID: 131396005}
-      type: 6
-      animType: 1
-      to_Vec3: {x: 0, y: 0, z: 0}
-      to_Color: {r: 0, g: 0, b: 0, a: 0}
-      to_V: 1
-      isPlaying: 0
-    - enable: 1
-      time: 1
-      delay: 2
-      ezEaseType: 0
-      animationCurve:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      target: {fileID: 1935794181}
-      type: 7
-      animType: 1
-      to_Vec3: {x: 1, y: 0, z: 0}
-      to_Color: {r: 0, g: 0, b: 0, a: 0}
-      to_V: 0
-      isPlaying: 0
-    - enable: 1
-      time: 1
-      delay: 0
-      ezEaseType: 0
-      animationCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 1
-          outSlope: 1
-          tangentMode: 34
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 1
-          outSlope: 1
-          tangentMode: 34
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      target: {fileID: 876076586}
-      type: 2
-      animType: 1
-      to_Vec3: {x: 0, y: 0, z: 0}
-      to_Color: {r: 1, g: 0, b: 0, a: 0.56078434}
-      to_V: 0.5
-      isPlaying: 0
-    - enable: 1
-      time: 1
+      time: 2
       delay: 0
       ezEaseType: 0
       animationCurve:
         serializedVersion: 2
         m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      target: {fileID: 1935794181}
-      type: 2
-      animType: 1
-      to_Vec3: {x: 2.79, y: 0, z: 0}
-      to_Color: {r: 0, g: 0, b: 0, a: 0}
-      to_V: 0
-      isPlaying: 0
-    - enable: 1
-      time: 1
-      delay: 5
-      ezEaseType: 0
-      animationCurve:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
       target: {fileID: 1935794181}
       type: 5
       animType: 1
-      to_Vec3: {x: 0, y: 0, z: 0}
-      to_Color: {r: 0.07497215, g: 0, b: 1, a: 1}
+      to_Vec3: {x: 3.01, y: -2.32, z: 0}
+      to_Color: {r: 0, g: 0, b: 0, a: 0}
       to_V: 0
       isPlaying: 0
     - enable: 1
@@ -541,103 +562,57 @@ MonoBehaviour:
       animationCurve:
         serializedVersion: 2
         m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
       target: {fileID: 1935794181}
-      type: 0
-      animType: 1
-      to_Vec3: {x: 1, y: 0, z: 0}
+      type: 3
+      animType: 0
+      to_Vec3: {x: 0, y: 3.4, z: 0}
       to_Color: {r: 0, g: 0, b: 0, a: 0}
       to_V: 0
       isPlaying: 0
-    parallels:
-    - enable: 0
+    - enable: 1
       time: 1
-      delay: 5
+      delay: 0
       ezEaseType: 0
       animationCurve:
         serializedVersion: 2
         m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
       target: {fileID: 1935794181}
-      type: 2
-      animType: 1
-      to_Vec3: {x: -5, y: 0, z: 0}
+      type: 3
+      animType: 0
+      to_Vec3: {x: 3.01, y: -2.32, z: 0}
       to_Color: {r: 0, g: 0, b: 0, a: 0}
       to_V: 0
       isPlaying: 0
-    - enable: 0
+    - enable: 1
       time: 1
-      delay: 2
+      delay: 0
       ezEaseType: 0
       animationCurve:
         serializedVersion: 2
         m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
       target: {fileID: 1935794181}
-      type: 5
+      type: 3
       animType: 1
       to_Vec3: {x: 0, y: 0, z: 0}
       to_Color: {r: 0, g: 0, b: 0, a: 0}
       to_V: 0
       isPlaying: 0
-    - enable: 0
-      time: 1
-      delay: 2
-      ezEaseType: 0
-      animationCurve:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      target: {fileID: 1935794181}
-      type: 0
-      animType: 1
-      to_Vec3: {x: 0, y: 0, z: 0}
-      to_Color: {r: 0, g: 0, b: 0, a: 0}
-      to_V: 0
-      isPlaying: 0
-    - enable: 0
-      time: 1
-      delay: 2
-      ezEaseType: 0
-      animationCurve:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      target: {fileID: 131396005}
-      type: 6
-      animType: 1
-      to_Vec3: {x: 0, y: 0, z: 0}
-      to_Color: {r: 0, g: 0, b: 0, a: 0}
-      to_V: 0
-      isPlaying: 0
+    parallels: []
   children:
     chains: []
     parallels: []
---- !u!4 &279211686
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 279211684}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &607375916
+    isPlayingChains: 0
+    isPlayingParallels: 0
+--- !u!1 &627019677
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -645,43 +620,30 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 607375918}
-  - component: {fileID: 607375917}
+  - component: {fileID: 627019678}
   m_Layer: 0
-  m_Name: TweenAnimCombiner
+  m_Name: tweens
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &607375917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 607375916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a83594ccd3ae6e45a96201d696ed7aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tweenAnimBehaviours:
-  - {fileID: 840525721}
-  - {fileID: 279211685}
---- !u!4 &607375918
+--- !u!4 &627019678
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 607375916}
+  m_GameObject: {fileID: 627019677}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1561822509}
+  - {fileID: 93672914}
+  - {fileID: 326512033}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!850595691 &837477981
 LightingSettings:
@@ -744,81 +706,6 @@ LightingSettings:
   m_PVRFilteringAtrousPositionSigmaDirect: 0.5
   m_PVRFilteringAtrousPositionSigmaIndirect: 2
   m_PVRFilteringAtrousPositionSigmaAO: 1
---- !u!1 &840525720
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 840525722}
-  - component: {fileID: 840525721}
-  m_Layer: 0
-  m_Name: TweenAnimBehaviour(Sphere)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &840525721
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 840525720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f0d74dfdcd014316b30a59a55d39025, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playOnStart: 1
-  restoreOnDisable: 1
-  temps:
-  - enable: 1
-    target: {fileID: 7323233}
-    type: 3
-    to_Vec3: {x: -2.44, y: 0, z: 0}
-    to_Color: {r: 0, g: 0, b: 0, a: 0}
-    to_V: 0
-  group:
-    chains:
-    - enable: 1
-      time: 1
-      delay: 0
-      ezEaseType: 0
-      animationCurve:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 0
-        m_PostInfinity: 0
-        m_RotationOrder: 0
-      target: {fileID: 7323233}
-      type: 2
-      animType: 1
-      to_Vec3: {x: 0, y: 0, z: 0}
-      to_Color: {r: 0, g: 0, b: 0, a: 0}
-      to_V: 0
-      isPlaying: 0
-    parallels: []
-  children:
-    chains: []
-    parallels: []
---- !u!4 &840525722
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 840525720}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &876076586
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,6 +878,110 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1101732539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1101732541}
+  - component: {fileID: 1101732540}
+  m_Layer: 0
+  m_Name: TweenAnimEntry
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1101732540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101732539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c40ca3883c5d9c438145ede33bc546e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playOnStart: 1
+  restoreOnDisable: 1
+  children:
+    chains:
+    - {fileID: 1561822508}
+    parallels:
+    - {fileID: 93672913}
+    - {fileID: 326512034}
+    isPlayingChains: 0
+    isPlayingParallels: 0
+--- !u!4 &1101732541
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101732539}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 38146937}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1170159675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1170159677}
+  - component: {fileID: 1170159676}
+  m_Layer: 0
+  m_Name: TweenAnimBehaviourMethodTest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1170159676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170159675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fdff493a8394284eb69552def221eb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenAnimBehaviour: {fileID: 1618743924}
+  drawRect:
+    serializedVersion: 2
+    x: 10
+    y: 10
+    width: 200
+    height: 400
+--- !u!4 &1170159677
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170159675}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 589.375, y: 673.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1618743923}
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1329190546
 GameObject:
   m_ObjectHideFlags: 0
@@ -1165,6 +1156,162 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1561822507
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1561822509}
+  - component: {fileID: 1561822508}
+  m_Layer: 0
+  m_Name: TweemAnimText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1561822508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1561822507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f0d74dfdcd014316b30a59a55d39025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playOnStart: 0
+  restoreOnDisable: 0
+  temps:
+  - enable: 1
+    target: {fileID: 876076586}
+    type: 3
+    to_Vec3: {x: 0, y: 100, z: 0}
+    to_Color: {r: 0, g: 0, b: 0, a: 0}
+    to_V: 0
+  - enable: 1
+    target: {fileID: 876076586}
+    type: 5
+    to_Vec3: {x: 0, y: 100, z: 0}
+    to_Color: {r: 1, g: 1, b: 1, a: 0}
+    to_V: 0
+  group:
+    chains: []
+    parallels:
+    - enable: 1
+      time: 1
+      delay: 0
+      ezEaseType: 0
+      animationCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+      target: {fileID: 876076586}
+      type: 3
+      animType: 1
+      to_Vec3: {x: 0, y: 0, z: 0}
+      to_Color: {r: 0, g: 0, b: 0, a: 0}
+      to_V: 0
+      isPlaying: 0
+    - enable: 1
+      time: 1
+      delay: 0
+      ezEaseType: 0
+      animationCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+      target: {fileID: 876076586}
+      type: 5
+      animType: 1
+      to_Vec3: {x: 0, y: 0, z: 0}
+      to_Color: {r: 0, g: 0, b: 0, a: 0}
+      to_V: 0
+      isPlaying: 0
+  children:
+    chains: []
+    parallels: []
+    isPlayingChains: 0
+    isPlayingParallels: 0
+--- !u!4 &1561822509
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1561822507}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 627019678}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1618743922
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1618743923}
+  - component: {fileID: 1618743924}
+  m_Layer: 0
+  m_Name: TweemAnimMain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1618743923
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618743922}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -589.375, y: -673.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1170159677}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1618743924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618743922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f0d74dfdcd014316b30a59a55d39025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playOnStart: 1
+  restoreOnDisable: 1
+  temps: []
+  group:
+    chains: []
+    parallels: []
+  children:
+    chains:
+    - {fileID: 1561822508}
+    - {fileID: 93672913}
+    parallels: []
+    isPlayingChains: 0
+    isPlayingParallels: 0
 --- !u!1 &1794033021
 GameObject:
   m_ObjectHideFlags: 0
@@ -1438,7 +1585,7 @@ Transform:
   m_GameObject: {fileID: 1935794181}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 185617077}
   m_RootOrder: 0

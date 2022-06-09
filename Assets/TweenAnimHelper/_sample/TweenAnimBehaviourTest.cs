@@ -6,9 +6,6 @@ using System.Threading.Tasks;
 
 public class TweenAnimBehaviourTest : MonoBehaviour
 {
-    [SerializeField] TweenAnimBehaviour tweenAnimBehaviour = null;
-    [SerializeField] TweenAnimBehaviour tweenAnimBehaviourSphere = null;
-
     [SerializeField] TweenAnimCombiner tweenAnimCombiner = null;
 
     [SerializeField] Rect drawRect = new Rect(10,10,200,200);
@@ -17,33 +14,7 @@ public class TweenAnimBehaviourTest : MonoBehaviour
     {
         GUILayout.BeginArea(drawRect);
         GUILayout.Label($"count: {EzTween.TweenCount}");
-        if (GUILayout.Button("Play All"))
-        {
-            //_ = ezTweenBehaviour.Play();
-            _ = Play();
-        }
-        if (GUILayout.Button("Cancel1"))
-        {
-            tweenAnimBehaviour.Cancel();
-        }
-        if (GUILayout.Button("Cancel2"))
-        {
-            tweenAnimBehaviour.Cancel();
-        }
-        if (GUILayout.Button("Cancel All"))
-        {
-            tweenAnimBehaviour.Cancel();
-            tweenAnimBehaviourSphere.Cancel();
-        }
-        if (GUILayout.Button("Restore All"))
-        {
-            // アニメ開始位置へ
-            tweenAnimBehaviour.RestoreStartCondition();
-            tweenAnimBehaviourSphere.RestoreStartCondition();
-        }
-
-        GUILayout.Space(20);
-
+        
         GUILayout.Label("tweenAnimCombiner");
         if (GUILayout.Button("Play "))
         {
@@ -65,13 +36,6 @@ public class TweenAnimBehaviourTest : MonoBehaviour
         GUILayout.EndArea();
     }
 
-    async Task Play()
-    {
-        // 順に再生
-        await tweenAnimBehaviour.Play();
-        await tweenAnimBehaviourSphere.Play();
-        Debug.LogWarning("Play_Complete");
-    }
 
     async Task PlayForwardCombiner(bool isForward = true)
     {

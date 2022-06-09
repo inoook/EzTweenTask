@@ -6,7 +6,7 @@ using Ez;
 
 // ----------
 // https://gomafrontier.com/unity/4553
-[CustomPropertyDrawer(typeof(TweenAnimBehaviour.TweenObj))]
+[CustomPropertyDrawer(typeof(TweenObj))]
 public class TweenObjDrawer : PropertyDrawer
 {
     Color playingColor = Color.green;
@@ -14,6 +14,8 @@ public class TweenObjDrawer : PropertyDrawer
 
     public override void OnGUI(Rect drawRect, SerializedProperty property, GUIContent label)
     {
+        //PropertyDrawerUtility.DrawDefaultGUI(drawRect, property, label);
+        //return;
         // List用に1つのプロパティであることを示すためPropertyScopeで囲む
         //using (new EditorGUI.PropertyScope(drawRect, label, property))
         {
@@ -21,6 +23,7 @@ public class TweenObjDrawer : PropertyDrawer
             drawRect.height = EditorGUIUtility.singleLineHeight;
 
             var playingProperty = property.FindPropertyRelative("isPlaying");
+            var playingChildGroupProperty = property.FindPropertyRelative("isPlayingChildGroup");
             var enableProperty = property.FindPropertyRelative("enable");
 
             GUI.contentColor = playingProperty.boolValue ? playingColor : enableProperty.boolValue ? Color.white : disableColor;
@@ -30,7 +33,7 @@ public class TweenObjDrawer : PropertyDrawer
             if(actionTypeProperty == null) {
                 Debug.LogWarning("No");
                 return; }
-            if ((TweenAnimBehaviour.TYPE)actionTypeProperty.enumValueIndex == TweenAnimBehaviour.TYPE.__DELAY)
+            if (actionTypeProperty.intValue == (int)TweenObj.TYPE.__DELAY)
             {
                 // Delay
                 drawRect.y += EditorGUIUtility.singleLineHeight + 2f;
@@ -71,24 +74,25 @@ public class TweenObjDrawer : PropertyDrawer
 
                 var animTypeProperty = property.FindPropertyRelative("animType");
                 //if (animTypeProperty.enumValueIndex == (int)TweenAnimBehaviour.AnimType.NORMAL)
-                if (animTypeProperty.intValue == (int)TweenAnimBehaviour.AnimType.NORMAL)
-                    {
+                if (animTypeProperty.intValue == (int)TweenObj.AnimType.NORMAL)
+                {
                     drawRect.y += EditorGUIUtility.singleLineHeight + 2f;
 
-                    switch ((TweenAnimBehaviour.TYPE)actionTypeProperty.enumValueIndex)
+                    // typeによるフィールド表示変更
+                    switch (actionTypeProperty.intValue)
                     {
-                        case TweenAnimBehaviour.TYPE.POSITION:
-                        case TweenAnimBehaviour.TYPE.POSITION_RELATIVE:
+                        case (int)TweenObj.TYPE.POSITION:
+                        case (int)TweenObj.TYPE.POSITION_RELATIVE:
                             EditorGUI.PropertyField(drawRect, property.FindPropertyRelative("to_Vec3"), new GUIContent("pos"), false);
                             break;
-                        case TweenAnimBehaviour.TYPE.SCALE:
-                        case TweenAnimBehaviour.TYPE.SCALE_RELATIVE:
+                        case (int)TweenObj.TYPE.SCALE:
+                        case (int)TweenObj.TYPE.SCALE_RELATIVE:
                             EditorGUI.PropertyField(drawRect, property.FindPropertyRelative("to_Vec3"), new GUIContent("scale"), false);
                             break;
-                        case TweenAnimBehaviour.TYPE.COLOR:
+                        case (int)TweenObj.TYPE.COLOR:
                             EditorGUI.PropertyField(drawRect, property.FindPropertyRelative("to_Color"), new GUIContent("color"), false);
                             break;
-                        case TweenAnimBehaviour.TYPE.ALPHA:
+                        case (int)TweenObj.TYPE.ALPHA:
                             EditorGUI.PropertyField(drawRect, property.FindPropertyRelative("to_V"), new GUIContent("alpha"), false);
                             break;
 
@@ -97,10 +101,12 @@ public class TweenObjDrawer : PropertyDrawer
                 }
             }
 
-            GUI.contentColor = Color.white;
-
-            //drawRect.y += EditorGUIUtility.singleLineHeight + 2f;
+            //GUI.contentColor = Color.white;
+            //drawRect.y += EditorGUIUtility.singleLineHeight + 8f;
+            //GUI.contentColor = playingChildGroupProperty.boolValue ? playingColor : Color.white;
             //EditorGUI.PropertyField(drawRect, property.FindPropertyRelative("childGroup"), new GUIContent("group"), true);
+
+            GUI.contentColor = Color.white;
 
             EditorGUI.EndProperty();
         }
@@ -109,32 +115,39 @@ public class TweenObjDrawer : PropertyDrawer
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
         var padding = 5;
-        var height = EditorGUIUtility.singleLineHeight+4;
+        var lineH = EditorGUIUtility.singleLineHeight + 4;
+        var height = 0f;
+
+        //var childGroupProperty = property.FindPropertyRelative("childGroup");
+        //float childGroupH = EditorGUI.GetPropertyHeight(childGroupProperty, true);
+        //height += childGroupH + padding;
 
         var actionTypeProperty = property.FindPropertyRelative("type");
         //bool isDelay = (TweenAnimBehaviour.TYPE)actionTypeProperty.enumValueIndex == TweenAnimBehaviour.TYPE.__DELAY;
-        bool isDelay = actionTypeProperty.enumValueIndex == (int)TweenAnimBehaviour.TYPE.__DELAY;
+        bool isDelay = actionTypeProperty.intValue == (int)TweenObj.TYPE.__DELAY;
         // Delayの時のサイズ
         if (isDelay)
         {
-            return height * 3.25f + padding;
+            height += lineH * 3.25f + padding;
+            return height;
         }
 
         // 通常時
         var animTypeProperty = property.FindPropertyRelative("animType");
         //bool isNormal = (TweenAnimBehaviour.AnimType)animTypeProperty.enumValueIndex == TweenAnimBehaviour.AnimType.NORMAL;
-        bool isNormal = animTypeProperty.enumValueIndex == (int)TweenAnimBehaviour.AnimType.NORMAL;
+        bool isNormal = animTypeProperty.intValue == (int)TweenObj.AnimType.NORMAL;
 
         int index = isNormal ? 1 : 0; 
         var easeTypeProperty = property.FindPropertyRelative("ezEaseType");
-        if (easeTypeProperty.enumValueIndex == (int)(EzEaseType.AnimationCurve))
+        if (easeTypeProperty.intValue == (int)(EzEaseType.AnimationCurve))
         {
-            height *= (7 + index);
+            height += lineH*(7 + index);
         }
         else
         {
-            height *= (6 + index);
+            height += lineH * (6 + index);
         }
+
         return height + padding;
     }
 }

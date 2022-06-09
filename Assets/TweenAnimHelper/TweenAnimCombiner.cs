@@ -21,7 +21,7 @@ public class TweenAnimCombiner : MonoBehaviour
         {
             int index = isForward ? i : (tweenAnimBehaviours.Length - 1 - i);
             var tweenAnim = tweenAnimBehaviours[index];
-            await tweenAnim.PlayForward(isForward);
+            //await tweenAnim.PlayForward(isForward);
         }
         Debug.LogWarning("TweenAnimCombiner.Play_Complete");
     }
