@@ -8,4 +8,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/EzTween/_sample/EzTweenSample.unity
     guid: f95905ccda3270342ac686dbaa70814d
+  - enabled: 1
+    path: Assets/EzTween/_sample/EzTweenCanvasTest.unity
+    guid: e017e30454b8d4c2baf31dfe539aa308
+  - enabled: 1
+    path: Assets/EzTween/_sample/EzTweenShortcutTest.unity
+    guid: c61f98f953aad4d0e8c2cbdaa7283f49
+  - enabled: 1
+    path: Assets/EzTween/_sample/EzTweenTest.unity
+    guid: ad60b35daa9151349b62b7e8078f01ee
+  - enabled: 1
+    path: Assets/TweenAnimHelper/_sample/TweenAnimEntryTest.unity
+    guid: f53209a01ce84e144b059148f8624849
+  - enabled: 1
+    path: Assets/TweenAnimHelper/_sample/TweenAnimBehaviourTest.unity
+    guid: 45147dad2bf2c40daa2dda31c5be80a6
   m_configObjects: {}
