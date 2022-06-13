@@ -5,7 +5,6 @@ using UnityEngine;
 using Ez;
 
 // ----------
-// https://gomafrontier.com/unity/4553
 [CustomPropertyDrawer(typeof(TweenObj))]
 public class TweenObjDrawer : PropertyDrawer
 {

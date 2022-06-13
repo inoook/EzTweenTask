@@ -8,12 +8,11 @@ using Ez;
 public class TweenAnimChildrenDrawer : PropertyDrawer
 {
     Color playingColor = Color.green;
-    //Color disableColor = Color.grey;
 
     public override void OnGUI(Rect drawRect, SerializedProperty property, GUIContent label)
     {
         EditorGUI.BeginProperty(drawRect, label, property);
-
+        //
         var isPlayingChainsProperty = property.FindPropertyRelative("isPlayingChains");
         var isPlayingParallelsProperty = property.FindPropertyRelative("isPlayingParallels");
 
@@ -27,7 +26,7 @@ public class TweenAnimChildrenDrawer : PropertyDrawer
         GUI.contentColor = isPlayingParallelsProperty.boolValue ? playingColor : Color.white;
         drawRect.y += EditorGUIUtility.singleLineHeight + 2f;
         EditorGUI.PropertyField(drawRect, property.FindPropertyRelative("parallels"), new GUIContent("parallels"), true);
-
+        //
         GUI.contentColor = Color.white;
         EditorGUI.EndProperty();
     }
