@@ -574,6 +574,7 @@ namespace Ez
             if (tweenList.Contains(cancellationTokenSource))
             {
                 tweenList.Remove(cancellationTokenSource);
+                cancellationTokenSource.Dispose();
             }
         }
 
@@ -636,14 +637,19 @@ namespace Ez
                             per = easeAct(per);
                         }
 
+                        updateAction(from + d * per);// cancel時にプロパティが更新されることがあったのでTask.Delayの前へ移動
+
                         //await Task.Delay(Mathf.Max(2, (int)(Time.deltaTime * 1000)));
                         //await Task.Delay((int)(Time.deltaTime*1000));
-                        await Task.Delay(20, _token);
                         //await Task.Delay(33, cancellToken);  // tokenを渡すと EzTween.CancelAll() で foreachをしようしているとエラーが発生する時がある。forだとエラーが起きない？
 
-                        _token.ThrowIfCancellationRequested();
+                        // -----
+                        // System.Threading.Tasks.TaskCanceledException: A task was canceled.が発生。キャンセルの発生するタイミングが異なることがある。
+                        //await Task.Delay(20, _token); 
 
-                        updateAction(from + d * per);
+                        // System.OperationCanceledException: The operation was canceled. が発生
+                        await Task.Delay(20);
+                        _token.ThrowIfCancellationRequested();
                     }
                 }
             }

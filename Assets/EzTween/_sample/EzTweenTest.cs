@@ -67,13 +67,13 @@ public class EzTweenTest : MonoBehaviour
     }
 
     async Task Act_RandomRot(float time = 1) {
-        Debug.Log("Start_Act_RandomRot");
+        //Debug.Log("Start_Act_RandomRot");
 
         Quaternion to = Random.rotationUniform;
         await EzTween.TweenAct(ezEaseType, targetTrans.rotation, to, time, (v) => {
             targetTrans.rotation = v;
         });
-        Debug.Log("Complete_Act_RandomRot");
+        //Debug.Log("Complete_Act_RandomRot");
     }
 
     [SerializeField] AnimationCurve animationCurve = null;
@@ -159,9 +159,23 @@ public class EzTweenTest : MonoBehaviour
         Debug.Log("Complete_Act_RandomPosition");
     }
 
+    void loopAct()
+    {
+        _ = Act_Loop();
+    }
+
+     async Task Act_Loop()
+    {
+        await Act_RandomRot(1);
+        await Task.CompletedTask;
+
+        loopAct();
+    }
+
     [SerializeField] Rect drawRect = new Rect(10,10,200,200);
     private void OnGUI() {
         GUILayout.BeginArea(drawRect);
+        GUILayout.Label($"TweenCount: ({EzTween.TweenCount})");
         if (GUILayout.Button("Act_ToScale"))
         {
             _ = Act_ToScale();
@@ -194,9 +208,15 @@ public class EzTweenTest : MonoBehaviour
         {
             _ = Act_Chain();
         }
+
         if (GUILayout.Button("ActPara"))
         {
             _ = ActPara();
+        }
+
+        if (GUILayout.Button("Act_Loop"))
+        {
+            _ = Act_Loop();
         }
         //if (GUILayout.Button("chain: Act_Chain2")) {
         //    Act_Chain2();
